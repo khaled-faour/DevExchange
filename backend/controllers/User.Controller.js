@@ -1,9 +1,5 @@
 const User = require("../models/User.model");
-const UserSession = require("../models/UserSession.model")
 const bcrypt = require('bcryptjs');
-const passport = require('passport');
-const GithubStrategy= require("passport-github2").Strategy
-const {COOKIE_KEY} = process.env;
 
 
 module.exports = {
