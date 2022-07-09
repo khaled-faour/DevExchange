@@ -8,6 +8,9 @@ require('./configs/passport.config')
 const express = require('express');
 const app = express();
 
+// Auth Middleware
+const authMiddleware = require('./middlewares/auth.middleware')
+
 app.use(express.json());
 
 app.use(cookieParser(process.env.SESSION_KEY));
@@ -24,6 +27,9 @@ app.use(passport.session());
 // Routes
 const authRouter = require('./routes/auth');
 app.use('/api/auth', authRouter);
+
+const bundlesRouter= require('./routes/bundles');
+app.use('/api/bundles', authMiddleware, bundlesRouter)
 
 app.listen(4001, ()=>{
     console.log(`Server running on port 4001`);
