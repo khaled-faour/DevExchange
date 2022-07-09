@@ -1,13 +1,14 @@
+const Comment = require('../models/Comment.model');
 const Post = require('../models/Post.model');
 
-const addPost = async (req, res)=>{
+const addComment = async (req, res)=>{
     try {
-        Post.create({...req.body})
+        Comment.create({...req.body})
         .then(async data=>{
-            if(req.body.question_id){
-                const question = await Post.findById(req.body.question_id);
-                question.answers.push(data.id)
-                question.save()
+            if(req.body.post_id){
+                const post = await Post.findById(req.body.post_id);
+                post.comments.push(data.id)
+                post.save()
             }
             res.status(201).json(data);
         })
@@ -20,7 +21,7 @@ const addPost = async (req, res)=>{
 
 const getAll = async (req, res)=>{
     try {
-        Post.find()
+        Comment.find()
         .then(data=>{
             res.status(201).json(data);
         })
@@ -32,7 +33,7 @@ const getAll = async (req, res)=>{
 
 const getById = async (req, res)=>{
     try {
-        Post.findById(req.params.id).populate("answers comments")
+        Comment.findById(req.params.id).populate("answers")
         .then(data=>{
             res.status(201).json(data);
         })
@@ -42,33 +43,10 @@ const getById = async (req, res)=>{
     }
 }
 
-const getAllQuestions = async (req, res)=>{
-    try {
-        Post.find({question_id: {$eq: null}})
-        .then(data=>{
-            res.status(201).json(data);
-        })
-    } catch (error) {
-        console.log(error);
-        res.status(500).send(error);
-    }
-}
-
-const getAllAnswers = async (req, res)=>{
-    try {
-        Post.find({question_id: {$ne: null}})
-        .then(data=>{
-            res.status(201).json(data);
-        })
-    } catch (error) {
-        console.log(error);
-        res.status(500).send(error);
-    }
-}
 
 const updateById = async (req, res)=>{
     try {
-        Post.findByIdAndUpdate(req.params.id, {...req.body})
+        Comment.findByIdAndUpdate(req.params.id, {...req.body})
         .then(async data=>{
             const upadatedData = await Post.findById(req.params.id)
             res.status(201).json(upadatedData);
@@ -81,7 +59,7 @@ const updateById = async (req, res)=>{
 
 const deleteById = async (req, res)=>{
     try {
-        Post.findByIdAndDelete(req.params.id)
+        Comment.findByIdAndDelete(req.params.id)
         .then(async data=>{
             res.status(201).json(data);
         })
@@ -94,11 +72,9 @@ const deleteById = async (req, res)=>{
 
 
 module.exports ={
-    addPost,
+    addComment,
     getAll,
     getById,
-    getAllQuestions,
-    getAllAnswers,
     updateById,
     deleteById
 }

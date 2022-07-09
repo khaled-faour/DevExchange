@@ -34,6 +34,9 @@ app.use('/api/bundles', authMiddleware, bundlesRouter)
 const postsRouter= require('./routes/posts');
 app.use('/api/posts', authMiddleware, postsRouter)
 
+const commentsRouter= require('./routes/comments');
+app.use('/api/comments', authMiddleware, commentsRouter)
+
 app.listen(4001, ()=>{
     console.log(`Server running on port 4001`);
 })

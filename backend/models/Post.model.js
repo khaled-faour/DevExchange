@@ -14,6 +14,11 @@ const postSchema = new mongoose.Schema({
     answers:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'post'
+    }],
+    comments:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'comment',
+        required: false
     }]
   
 }, { timestamps: true });
