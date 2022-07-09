@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const paymentSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     bundle: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'bundles'
+        ref: 'bundle'
     },
   
 }, { timestamps: true });

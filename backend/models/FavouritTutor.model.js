@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const favouriteTutorSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     tutor: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
   
 }, { timestamps: true });

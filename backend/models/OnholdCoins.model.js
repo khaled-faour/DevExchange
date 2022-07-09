@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const onholdCoinsSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     amount: {type: Number, required: false}
 }, { timestamps: true });

@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     balance: {type: Number, default: 0, required: false},
     user_type: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'userTypes',
+        ref: 'userType',
         default: "62c95e5b35fa2fa2caf2421d"
     },
     github_url: {type: String, required: false},

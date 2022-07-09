@@ -5,12 +5,16 @@ const postSchema = new mongoose.Schema({
     content: {type: String, required: false},
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     question_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'posts'
+        ref: 'post'
     },
+    answers:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'post'
+    }]
   
 }, { timestamps: true });
 

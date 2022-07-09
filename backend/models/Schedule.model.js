@@ -5,11 +5,11 @@ const scheduleSchema = new mongoose.Schema({
     end_time: {type: Date, required: false},
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     tutor: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
   
 }, { timestamps: true });

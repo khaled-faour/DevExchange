@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const transactionSchema = new mongoose.Schema({
     sender: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     receiver: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     amount: {type: Number, required: false}
 }, { timestamps: true });
