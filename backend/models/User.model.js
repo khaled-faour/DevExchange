@@ -16,8 +16,9 @@ const userSchema = new mongoose.Schema({
     },
     github_url: {type: String, required: false},
     linkedin_url: {type: String, required: false},
-    bio: {type: String, required: false}
-});
+    bio: {type: String, required: false},
+    is_tutor : {type: Boolean, default: false, required: false},
+}, { timestamps: true });
 
 userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("user", userSchema);

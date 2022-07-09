@@ -11,7 +11,7 @@ const tutorDetailsSchema = new mongoose.Schema({
     },
     github_url: {type: String},
     linkedin_url: {type: String}
-});
+}, { timestamps: true });
 
 userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("TutorDetails", tutorDetailsSchema);
