@@ -31,6 +31,9 @@ app.use('/api/auth', authRouter);
 const bundlesRouter= require('./routes/bundles');
 app.use('/api/bundles', authMiddleware, bundlesRouter)
 
+const postsRouter= require('./routes/posts');
+app.use('/api/posts', authMiddleware, postsRouter)
+
 app.listen(4001, ()=>{
     console.log(`Server running on port 4001`);
 })
