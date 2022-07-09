@@ -8,14 +8,15 @@ const userSchema = new mongoose.Schema({
     last_name: {type: String, required: false},
     email: {type: String, required: false},
     password: {type: String, required: false},
-    profile_picture: {type: String},
-    balance: {type: Number, default: 0},
+    profile_picture: {type: String, required: false},
+    balance: {type: Number, default: 0, required: false},
     user_type: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user_types'
     },
-    github_url: {type: String},
-    linkedin_url: {type: String}
+    github_url: {type: String, required: false},
+    linkedin_url: {type: String, required: false},
+    bio: {type: String, required: false}
 });
 
 userSchema.plugin(findOrCreate)
