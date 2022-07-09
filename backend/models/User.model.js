@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     balance: {type: Number, default: 0, required: false},
     user_type: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user_types'
+        ref: 'userTypes'
     },
     github_url: {type: String, required: false},
     linkedin_url: {type: String, required: false},
