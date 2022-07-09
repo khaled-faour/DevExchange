@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const reviewSchema = new mongoose.Schema({
     user: {
@@ -15,5 +14,4 @@ const reviewSchema = new mongoose.Schema({
   
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("review", reviewSchema);

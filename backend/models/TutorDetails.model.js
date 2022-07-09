@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const tutorDetailsSchema = new mongoose.Schema({
     hourly_rate: {Type: Number, required: true},
@@ -13,5 +12,4 @@ const tutorDetailsSchema = new mongoose.Schema({
     linkedin_url: {type: String}
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("TutorDetails", tutorDetailsSchema);

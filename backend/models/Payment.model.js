@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const paymentSchema = new mongoose.Schema({
     user: {
@@ -13,5 +12,4 @@ const paymentSchema = new mongoose.Schema({
   
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("Payment", paymentSchema);

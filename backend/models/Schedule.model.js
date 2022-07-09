@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const scheduleSchema = new mongoose.Schema({
     start_time: {type: Date, required: false},
@@ -15,5 +14,4 @@ const scheduleSchema = new mongoose.Schema({
   
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("schedule", scheduleSchema);

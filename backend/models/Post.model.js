@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const postSchema = new mongoose.Schema({
     title: {type: String, required: false},
@@ -15,5 +14,4 @@ const postSchema = new mongoose.Schema({
   
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("post", postSchema);

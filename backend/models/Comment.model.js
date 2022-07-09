@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const commentSchema = new mongoose.Schema({
     content: {type: String, required: false},
@@ -14,5 +13,4 @@ const commentSchema = new mongoose.Schema({
   
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("comment", commentSchema);

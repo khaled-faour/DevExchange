@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const bundleSchema = new mongoose.Schema({
     price: {type: Number, required: false},
@@ -7,5 +6,4 @@ const bundleSchema = new mongoose.Schema({
     image: {type: String, required: false},
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("bundle", bundleSchema);

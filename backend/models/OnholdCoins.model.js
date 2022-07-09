@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const onholdCoinsSchema = new mongoose.Schema({
     user: {
@@ -9,5 +8,4 @@ const onholdCoinsSchema = new mongoose.Schema({
     amount: {type: Number, required: false}
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("onholdcoins", onholdCoinsSchema);

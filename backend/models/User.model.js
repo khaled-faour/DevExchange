@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const userSchema = new mongoose.Schema({
     provider_id: {type: String, required: false},
@@ -21,5 +20,4 @@ const userSchema = new mongoose.Schema({
     is_tutor : {type: Boolean, default: false, required: false},
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("user", userSchema);

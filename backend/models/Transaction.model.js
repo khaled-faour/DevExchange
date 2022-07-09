@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const transactionSchema = new mongoose.Schema({
     sender: {
@@ -13,5 +12,4 @@ const transactionSchema = new mongoose.Schema({
     amount: {type: Number, required: false}
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("transaction", transactionSchema);

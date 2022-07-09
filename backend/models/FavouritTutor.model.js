@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
 
 const favouriteTutorSchema = new mongoose.Schema({
     user: {
@@ -13,5 +12,4 @@ const favouriteTutorSchema = new mongoose.Schema({
   
 }, { timestamps: true });
 
-userSchema.plugin(findOrCreate)
 module.exports = mongoose.model("FavouriteTutor", favouriteTutorSchema);

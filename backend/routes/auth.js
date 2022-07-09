@@ -2,7 +2,7 @@ const {Router} = require('express');
 const userController = require('../controllers/User.Controller');
 const router = Router();
 const passport = require('passport');
-const authMiddleware = require('../middlewares/auth');
+const authMiddleware = require('../middlewares/auth.middleware');
 
 
 // Testing Route
