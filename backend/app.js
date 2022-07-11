@@ -49,6 +49,9 @@ app.use('/api/onholdCoins', authMiddleware, onholdCoinsRouter)
 const reviewsRouter= require('./routes/reviews');
 app.use('/api/reviews', authMiddleware, reviewsRouter)
 
+const paymentsRouter= require('./routes/payments');
+app.use('/api/payments', authMiddleware, paymentsRouter)
+
 app.listen(4001, ()=>{
     console.log(`Server running on port 4001`);
 })
