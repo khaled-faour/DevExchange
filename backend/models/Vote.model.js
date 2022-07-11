@@ -9,6 +9,10 @@ const voteSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'post'
     },
+    is_down: {
+        type: Boolean,
+        required: false
+    }
   
 }, { timestamps: true });
 
