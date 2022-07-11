@@ -1,4 +1,5 @@
 import {createUseStyles} from 'react-jss';
+import colors from '../../assets/styles/colors';
 
 const styles = createUseStyles({
     header: {
@@ -23,7 +24,7 @@ const styles = createUseStyles({
             '&:hover': {
                 cursor: 'pointer',
                 textDecoration: 'underline',
-                textDecorationColor: '#0074ff',
+                textDecorationColor: colors.primary,
                 textDecorationStyle: 'solid',
                 textDecorationThickness: '2px',
                 textUnderlineOffset: '35px',

@@ -1,8 +1,9 @@
 import {createUseStyles} from 'react-jss';
+import colors from '../../assets/styles/colors';
 
 const styles = createUseStyles({
     button:{
-        backgroundColor: '#0074ff',
+        backgroundColor: colors.primary,
         border: 'none',
         borderRadius: '50px',
         height: '50px',
