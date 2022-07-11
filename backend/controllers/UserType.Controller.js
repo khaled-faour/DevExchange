@@ -72,7 +72,7 @@ const deleteById = async (req, res)=>{
 
 
 module.exports ={
-    addTransaction,
+    addUserType,
     getAll,
     getById,
     updateById,
