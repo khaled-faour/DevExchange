@@ -55,6 +55,9 @@ app.use('/api/payments', authMiddleware, paymentsRouter)
 const transactionsRouter= require('./routes/transactions');
 app.use('/api/transactions', authMiddleware, transactionsRouter)
 
+const userTypesRouter= require('./routes/userTypes');
+app.use('/api/userTypes', authMiddleware, userTypesRouter)
+
 app.listen(4001, ()=>{
     console.log(`Server running on port 4001`);
 })
