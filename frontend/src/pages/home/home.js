@@ -10,13 +10,13 @@ const Home = () => {
     return (
         <div>
             <header className={classes.header}>
-                <img src={logo} alt="logo" height={70}/>
+                <a href='.'><img src={logo} alt="logo" height={70}/></a>
                 <ul className={classes.links}>
                     <li><button onClick={()=>console.log("button")} href='#'>How it works</button></li>
                     <li><button onClick={()=>console.log("button")} href='#'>FAQ</button></li>
                     <li><button onClick={()=>console.log("button")} href='#'>Become a Tutor</button></li>
                 </ul>
-                <h1><Button/></h1>
+                <Button/>
             </header>
         </div>
     )
