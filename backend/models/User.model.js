@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
     linkedin_url: {type: String, required: false},
     bio: {type: String, required: false},
     is_tutor : {type: Boolean, default: false, required: false},
+    tutor_details: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'tutorDetails',
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model("user", userSchema);
