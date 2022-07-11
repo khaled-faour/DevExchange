@@ -11,6 +11,7 @@ const styles = createUseStyles({
         fontWeight: '500',
         '&:hover': {
             filter: 'brightness(.8)',
+            cursor: 'pointer',
         }
     }
 });
