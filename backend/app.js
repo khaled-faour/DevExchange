@@ -43,6 +43,9 @@ app.use('/api/tutorDetails', authMiddleware, tutorDetailsRouter)
 const favouriteTutorRouter= require('./routes/favouriteTutors');
 app.use('/api/favouriteTutors', authMiddleware, favouriteTutorRouter)
 
+const onholdCoinsRouter= require('./routes/onholdCoins');
+app.use('/api/onholdCoins', authMiddleware, onholdCoinsRouter)
+
 app.listen(4001, ()=>{
     console.log(`Server running on port 4001`);
 })
