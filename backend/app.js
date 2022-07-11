@@ -40,6 +40,9 @@ app.use('/api/comments', authMiddleware, commentsRouter)
 const tutorDetailsRouter= require('./routes/tutorDetails');
 app.use('/api/tutorDetails', authMiddleware, tutorDetailsRouter)
 
+const favouriteTutorRouter= require('./routes/favouriteTutors');
+app.use('/api/favouriteTutors', authMiddleware, favouriteTutorRouter)
+
 app.listen(4001, ()=>{
     console.log(`Server running on port 4001`);
 })
