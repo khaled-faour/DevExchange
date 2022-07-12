@@ -6,10 +6,10 @@ const styles = createUseStyles({
         backgroundColor: colors.primary,
         border: 'none',
         borderRadius: '50px',
-        height: '50px',
-        padding: '0 20px',
+        // height: '50px',
+        padding: '10px 20px',
         color: '#fff',
-        fontWeight: '500',
+        fontWeight: '600',
         '&:hover': {
             filter: 'brightness(.8)',
             cursor: 'pointer',

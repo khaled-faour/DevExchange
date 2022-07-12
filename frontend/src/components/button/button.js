@@ -11,7 +11,6 @@ const Button = ({ children, onClick }) => {
             // onMouseLeave={() => setIsHovered(false)}
         >
             {children}
-            Login/Sign up
         </button>
     );
 }
