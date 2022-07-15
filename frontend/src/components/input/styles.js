@@ -14,6 +14,7 @@ const styles = createUseStyles({
             border: '1px solid #ccc',
             borderRadius: '5px',
             fontSize: '1.2rem',
+            boxSizing: 'border-box',
             '&:focus': {
                 outline: 'none',
             }

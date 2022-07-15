@@ -5,7 +5,7 @@ const styles = createUseStyles({
     button:{
         backgroundColor: colors.primary,
         border: 'none',
-        borderRadius: '50px',
+        borderRadius: '5px',
         // height: '50px',
         padding: '10px 20px',
         color: '#fff',
@@ -25,6 +25,9 @@ const styles = createUseStyles({
             filter: 'brightness(.8)',
             cursor: 'pointer',
         }
+    },
+    fullWidth:{
+        width: '100%',
     }
 });
 
