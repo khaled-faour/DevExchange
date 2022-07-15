@@ -43,6 +43,9 @@ const styles = createUseStyles({
         display: 'flex',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        '&:nth-child(odd)': {
+            backgroundColor: '#f5f5f5',
+        },
         '& h1': {
             fontSize: fontSizes.h1,
             margin: '0 0 0 0',
@@ -55,6 +58,11 @@ const styles = createUseStyles({
         '& .subtitle': {
             color: 'black'
         }
+    },
+    landing:{
+        width: '30%',
+        color: '#474D59',
+        textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     },
     title:{
         width: '30%',
