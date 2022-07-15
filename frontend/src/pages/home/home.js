@@ -9,6 +9,7 @@ import image6 from "../../assets/images/undraw_respond_re_iph2 1.svg"
 import image7 from "../../assets/images/undraw_group_video_re_btu7 1.svg"
 import styles from './styles';
 import Button from '../../components/button/button';
+import LoginForm from '../../components/login/login';
 
 // Material UI
 import Dialog from '@mui/material/Dialog';
@@ -52,10 +53,7 @@ const Home = () => {
                         <span className={classes.closeIcon}><CloseIcon onClick={handleClose}/></span>
                     </DialogTitle>
                     <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means sending anonymous
-                        location data to Google, even when no apps are running.
-                    </DialogContentText>
+                        <LoginForm />
                     </DialogContent>
                 </Dialog>
             </header>
