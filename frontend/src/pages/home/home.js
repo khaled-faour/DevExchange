@@ -10,10 +10,28 @@ import image7 from "../../assets/images/undraw_group_video_re_btu7 1.svg"
 import styles from './styles';
 import Button from '../../components/button/button';
 
+// Material UI
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 
 const Home = () => {
     const classes = styles();
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
+
     return (
         <div>
             <header className={classes.header}>
@@ -23,7 +41,23 @@ const Home = () => {
                     <li><button onClick={()=>console.log("button")} href='#'>FAQ</button></li>
                     <li><button onClick={()=>console.log("button")} href='#'>Become a Tutor</button></li>
                 </ul>
-                <Button>LOGIN</Button>
+                <Button onClick={handleClickOpen}>LOGIN</Button>
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        <span className={classes.closeIcon}><CloseIcon onClick={handleClose}/></span>
+                    </DialogTitle>
+                    <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Let Google help apps determine location. This means sending anonymous
+                        location data to Google, even when no apps are running.
+                    </DialogContentText>
+                    </DialogContent>
+                </Dialog>
             </header>
             <main className={classes.main}>
                 {/* Landing Section */}

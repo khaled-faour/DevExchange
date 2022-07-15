@@ -87,6 +87,13 @@ const styles = createUseStyles({
         justifyContent: 'space-evenly',
         color: 'white',
         alignItems: 'center',
+    },
+    closeIcon:{
+        float: 'right',
+        cursor: 'pointer',
+        '&:hover': {
+            color: colors.primary,
+        }
     }
 })
 
