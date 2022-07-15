@@ -14,6 +14,17 @@ const styles = createUseStyles({
             filter: 'brightness(.8)',
             cursor: 'pointer',
         }
+    },
+    outlinedButton:{
+        color: colors.primary,
+        border: 'solid 1px ' + colors.primary,
+        borderRadius: '50px',
+        padding: '10px 20px',
+        fontWeight: '600',
+        '&:hover': {
+            filter: 'brightness(.8)',
+            cursor: 'pointer',
+        }
     }
 });
 
