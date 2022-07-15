@@ -23,16 +23,17 @@ const Home = () => {
                     <li><button onClick={()=>console.log("button")} href='#'>FAQ</button></li>
                     <li><button onClick={()=>console.log("button")} href='#'>Become a Tutor</button></li>
                 </ul>
-                <Button/>
+                <Button>LOGIN</Button>
             </header>
             <main className={classes.main}>
                 {/* Landing Section */}
                 <section className={classes.section}>
-                    <div className={classes.title}>
+                    <div className={classes.landing}>
                         <h1>DevExchange</h1>
                         <h2>Your Place </h2>
                         <h2>to Exchange</h2>
                         <h2>Your Knowledge</h2>
+                        <Button>JOIN OUR COMMUNITY</Button>
                     </div>
                     <div className={classes.image}>
                         <img src={image1}/>
