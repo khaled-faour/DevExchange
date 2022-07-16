@@ -22,6 +22,20 @@ const styles = createUseStyles({
             filter: 'brightness(0.9)',
        }
     },
+    title: {
+        position: 'relative',
+        fontSize: '20px',
+        fontWeight: 'bold',
+        textAlign: 'left',
+        width: '100%',
+    },
+    footer:{
+        cursor: 'pointer',
+    },
+    alert:{
+        position: 'relative',
+        width: '100%',
+    }
 
 
 })
