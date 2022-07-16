@@ -94,6 +94,13 @@ const styles = createUseStyles({
         '&:hover': {
             color: colors.primary,
         }
+    },
+    dialogTitle:{
+        fontWeight: 'bold',
+    },
+    dialogFooter:{
+        marginTop: '10px',
+        textAlign: 'center',
     }
 })
 

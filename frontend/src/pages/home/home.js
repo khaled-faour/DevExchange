@@ -13,9 +13,7 @@ import LoginForm from '../../components/login/login';
 
 // Material UI
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -49,10 +47,8 @@ const Home = () => {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title">
-                        <span className={classes.closeIcon}><CloseIcon onClick={handleClose}/></span>
-                    </DialogTitle>
                     <DialogContent>
+                        <span className={classes.closeIcon}><CloseIcon onClick={handleClose}/></span>
                         <LoginForm />
                     </DialogContent>
                 </Dialog>
