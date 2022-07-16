@@ -14,14 +14,14 @@ router.get("/", authMiddleware, (req, res)=>{
 router.get("/github", passport.authenticate('github', {scope: ['user:email']}))
 router.get('/github/callback',passport.authenticate('github', { failureRedirect: '/auth/error' }),
 function(req, res) {
-  res.send("Github");
+  res.redirect('http://localhost:3000/')
 });
 
 //Gogole Signin
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/auth/error' }),
   function(req, res) {
-    res.send('GOOGLE');
+    res.redirect("http://localhost:3000/");
   });
 
 

@@ -18,7 +18,7 @@ passport.deserializeUser(function(user, done) {
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,
   clientSecret: GITHUB_CLIENT_SECRET,
-  callbackURL: `http://127.0.0.1:4001/api/auth/github/callback`
+  callbackURL: `http://localhost:4001/api/auth/github/callback`
     },
     function(accessToken, refreshToken, profile, done) {
       User.findOne({provider_id: profile.id, provider: profile.provider}, async (err, user)=>{
@@ -45,7 +45,7 @@ passport.use(new GitHubStrategy({
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:4001/api/auth/google/callback"
+    callbackURL: "http://localhost:4001/api/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOne({provider_id: profile.id, provider: profile.provider}, async (err, user)=>{
