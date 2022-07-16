@@ -18,7 +18,7 @@ const styles = createUseStyles({
     outlinedButton:{
         color: colors.primary,
         border: 'solid 1px ' + colors.primary,
-        borderRadius: '50px',
+        borderRadius: '5px',
         padding: '10px 20px',
         fontWeight: '600',
         '&:hover': {
