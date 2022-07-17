@@ -14,14 +14,14 @@ router.get("/", authMiddleware, (req, res)=>{
 router.get("/github", passport.authenticate('github', {scope: ['user:email']}))
 router.get('/github/callback',passport.authenticate('github', { failureRedirect: '/auth/error' }),
 function(req, res) {
-  res.redirect('http://localhost:3000/')
+  res.redirect(process.env.REDIRECT_URI)
 });
 
 //Gogole Signin
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/auth/error' }),
   function(req, res) {
-    res.redirect("http://localhost:3000/");
+    res.redirect(process.env.REDIRECT_URI);
   });
 
 
@@ -40,7 +40,7 @@ router.post("/register", userController.register)
 router.get('/logout', (req, res)=>{
     req.logout((err)=>{
         if(err) return next(err)
-        res.send("Logged Out")
+        res.redirect(process.env.REDIRECT_URI);
     })
 })
 
