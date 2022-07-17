@@ -30,6 +30,7 @@ passport.use(new GitHubStrategy({
               provider: profile.provider,
               first_name: profile.displayName.split(" ")[0],
               last_name: profile.displayName.split(" ")[1],
+              profile_picture: profile.photos[0].value,
             })
            return done(null, createdUser)
           } catch(error) {
@@ -48,6 +49,7 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:4001/api/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
+    console.log(profile)
     User.findOne({provider_id: profile.id, provider: profile.provider}, async (err, user)=>{
       if(err) return done(err);
       if(!user){
@@ -57,6 +59,7 @@ passport.use(new GoogleStrategy({
             provider: profile.provider,
             first_name: profile.name.givenName,
             last_name: profile.name.familyName,
+            profile_picture: profile.photos[0].value,
           })
           return done(null, createdUser)
         } catch (error) {
