@@ -7,7 +7,7 @@ import UnauthenticatedRoutes from './unauthenticatedRoutes';
 const Routes = () => {
     const auth = useAuth()
     
-    if(auth.isAuth){
+    if(auth.isAuthenticated) {
         return <AuthenticatedRoutes />
     }
     return <UnauthenticatedRoutes />

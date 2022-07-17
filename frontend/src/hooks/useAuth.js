@@ -4,7 +4,6 @@ import {verify as verifyUser, logout as logoutUser} from "../redux/actions/authA
 const useAuth = ()=>{
     const dispatch = useDispatch();
     const user = useSelector(state=>state.user);
-    const isAuth= useSelector(state=>state.user.isAuthenticated);
     
     const verify = ()=>{
         dispatch(verifyUser());
@@ -14,7 +13,7 @@ const useAuth = ()=>{
         dispatch(logoutUser());
     }
 
-    return {user, isAuth, logout, verify};
+    return {...user, logout, verify};
 }
 
 export default useAuth;
