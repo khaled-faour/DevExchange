@@ -8,13 +8,20 @@ import styles from './styles';
 // Material UI
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import Dropdown from '../dropdownList/dropdownList';
 const Navbar = () => {
     const classes = styles();
     const navigate = useNavigate();
     const auth = useAuth();
 
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
+    const toggleDropdown = () => {
+        setDropdownOpen(!dropdownOpen);
+    }
     return (
+        <>
+        <div><Dropdown open={dropdownOpen}/></div>
         <nav className={classes.nav}>
             {/* Logo */}
             <div className={classes.logo}>
@@ -33,12 +40,13 @@ const Navbar = () => {
             </ul>
 
             {/* Avatar */}
-            <div className={classes.rightMenu}>
+            <div className={classes.rightMenu} onClick={toggleDropdown}>
                 <div className={classes.balance}><AccountBalanceWalletIcon />: {auth.user.balance}</div>
                 <div className={classes.avatar}><Avatar url={auth.user.profile_picture || "test"}/><ArrowDropDownIcon /></div>
             </div>
 
         </nav>
+    </>
     )
 }
 
