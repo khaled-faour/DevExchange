@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import Home from "./pages/home/home";
+import Home from "./pages/landingPage/landing";
 import useAuth from "./hooks/useAuth";
 import {useSelector} from "react-redux";
 
