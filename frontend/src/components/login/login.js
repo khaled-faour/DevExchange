@@ -9,6 +9,7 @@ import axios from 'axios';
 // Material UI
 import Divider from '@mui/material/Divider';
 import Alert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -17,6 +18,7 @@ const Login = ()=>{
     const classes = styles();
     const [isSignup, setIsSignup] = useState(false);
     const [signupSuccess, setSignupSuccess] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [credentials, setCredentials] = useState({
         first_name: '',
         last_name: '',
@@ -32,28 +34,26 @@ const Login = ()=>{
     }
 
     const onSubmit = (e)=>{
+        setIsSubmitting(true);
         if(isSignup){
             axios.post('/auth/register', credentials)
             .then(res=>{
-                setCredentials({
-                    first_name: '',
-                    last_name: '',
-                    email: '',
-                    password: ''
-                })
+                setCredentials({})
                 setIsSignup(false)
                 setSignupSuccess(true);
             })
             .catch(err=>{
                 console.log(err);
+                setIsSubmitting(false);
             })
         }else{
             axios.post('/auth/login', credentials)
             .then(res=>{
-                console.log(res);
+                window.location.reload();
             })
             .catch(err=>{
                 console.log(err);
+                setIsSubmitting(false);
             })
         }
         
@@ -67,10 +67,6 @@ const Login = ()=>{
         window.location.href = 'http://localhost:4001/api/auth/github'
     }
 
-    useEffect(()=>{
-        console.log(credentials);
-    }
-    ,[credentials])
     return (
         <div className={classes.container}>
 
@@ -81,9 +77,14 @@ const Login = ()=>{
             {/* Login By Email and Password */}
             {isSignup && <Input name="first_name" value={credentials.first_name} type="text" placeholder="First name" onChange={onChange}/>}
             {isSignup && <Input name="last_name"  value={credentials.last_name} type="text" placeholder="Last name" onChange={onChange}/>}
-            <Input name="email" value={credentials.email} type="text" placeholder="Email" onChange={onChange}/>
-            <Input name= "password" value={credentials.password} type="password" placeholder="Password" onChange={onChange}/>
-            <Button onClick={onSubmit} fullWidth>{isSignup ? 'Signup' : 'Log in'}</Button>
+            <Input name="email" value={credentials.email} type="text" placeholder="Email" onChange={onChange} disabled={isSubmitting}/>
+            <Input name= "password" value={credentials.password} type="password" placeholder="Password" onChange={onChange} disabled={isSubmitting}/>
+            <Button onClick={onSubmit} fullWidth>
+                {
+                isSubmitting? <CircularProgress size={12} style={{color: 'white'}}/> : 
+                    isSignup ? 'Signup' : 'Log in'
+                }
+            </Button>
 
             {/* <hr className={classes.hr}></hr> */}
             <Divider className={classes.divider}>or</Divider>
