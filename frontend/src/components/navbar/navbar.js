@@ -32,10 +32,10 @@ const Navbar = () => {
             {/* Nav Links */}
             <ul className={classes.links}>
                 <li>
-                    <a href="#">Questions</a>
+                    <a onClick={()=>navigate('/questions')}>Questions</a>
                 </li>
                 <li>
-                    <a href="#">Tutors</a>
+                    <a onClick={()=>navigate('/tutors')}>Tutors</a>
                 </li>
             </ul>
 

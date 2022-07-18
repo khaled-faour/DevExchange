@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import styles from './styles';
+import { useNavigate } from "react-router-dom";
+
 
 // Material-UI
 import PersonIcon from '@mui/icons-material/Person';
@@ -10,16 +12,17 @@ import LogoutIcon from '@mui/icons-material/Logout';
 const Dropdown = ({open}) => {
     const auth = useAuth();
     const classes = styles();
+    const navigate = useNavigate();
 
     return (
         open?
         <ul className={classes.list}>
-            <li className={classes.subItem}>
+            <li className={classes.subItem} onClick={()=>navigate('profile')}>
               <PersonIcon className={classes.icon} />
               <p>Profile</p>
             </li>
             <li className={classes.subItem}>
-              <CreditCardIcon className={classes.icon} />
+              <CreditCardIcon className={classes.icon} onClick={()=>navigate('bundles')}/>
               <p>Add Balance</p>
             </li>
             <li className={classes.subItem} onClick={auth.logout}>
