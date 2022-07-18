@@ -49,7 +49,6 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:4001/api/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log(profile)
     User.findOne({provider_id: profile.id, provider: profile.provider}, async (err, user)=>{
       if(err) return done(err);
       if(!user){

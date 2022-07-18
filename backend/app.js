@@ -1,6 +1,7 @@
 require('dotenv').config();
 require('./configs/db.config').connect()
 const cookieSession = require('express-session')
+const MongoDBStore = require('connect-mongodb-session')(cookieSession);
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const passport = require('passport')
@@ -20,6 +21,10 @@ app.use(cookieSession({
     secret: process.env.SESSION_KEY,
     resave: false,
     saveUninitialized: true,
+    store: new MongoDBStore({
+                uri: process.env.MONGO_URI,
+                collection: 'usersSessions'
+            })
     // cookie: { secure: true }
 }))
 app.use(passport.initialize());
