@@ -20,6 +20,9 @@ const styles = createUseStyles({
         cursor: 'pointer',
         padding: '0 10px',
         borderRadius: '5px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
         '&:hover': {
             backgroundColor: 'rgb(232, 232, 232)',
         }
