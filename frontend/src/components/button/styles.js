@@ -28,6 +28,9 @@ const styles = createUseStyles({
     },
     fullWidth:{
         width: '100%',
+    },
+    rounded:{
+        borderRadius: '20px',
     }
 });
 
