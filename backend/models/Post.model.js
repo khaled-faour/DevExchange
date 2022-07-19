@@ -19,7 +19,8 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'comment',
         required: false
-    }]
+    }],
+    tags: [{type: String, required: false}],
   
 }, { timestamps: true });
 
