@@ -5,6 +5,7 @@ const styles = createUseStyles({
     button:{
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: colors.primary,
         border: 'none',
         borderRadius: '5px',

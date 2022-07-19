@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './styles';
-import AddIcon from '@mui/icons-material/Add';
 
 const Button = ({ 
     children, 
