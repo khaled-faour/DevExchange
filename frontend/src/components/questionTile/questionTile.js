@@ -8,10 +8,10 @@ const QuestionTile = ({
     id,
     title="",
     tags=[],
-    isAnswered=false,
     createdAt,
     createdBy,
     borderColor="#ECE9EF",
+    answers=[],
 })=>{
     
     const classes = styles();
@@ -24,13 +24,13 @@ const QuestionTile = ({
     return (
         <div className={classes.container} style={{borderColor: borderColor}} onClick={handleNavigation}>
 
-            <h1 className={classes.title}>{title}</h1>
+            <h3 className={classes.title}>{title}</h3>
 
             <div className={classes.tags}>
                 <div>
                     {tags.map(tag=><Tag title={tag}/>)}
                 </div>
-                {isAnswered && <Tag title='Answered' color={colors.success}/>}
+                {answers.length > 0 && <Tag title='Answered' color={colors.success}/>}
             </div>
 
             <div className={classes.footer}>

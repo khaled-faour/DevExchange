@@ -2,6 +2,7 @@ import { createUseStyles } from "react-jss";
 
 const styles = createUseStyles({
     container: {
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
