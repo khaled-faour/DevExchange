@@ -3,6 +3,8 @@ import colors from '../../assets/styles/colors';
 
 const styles = createUseStyles({
     button:{
+        display: 'flex',
+        alignItems: 'center',
         backgroundColor: colors.primary,
         border: 'none',
         borderRadius: '5px',
@@ -13,6 +15,9 @@ const styles = createUseStyles({
         '&:hover': {
             filter: 'brightness(.8)',
             cursor: 'pointer',
+        },
+        '& svg': {
+            fontSize: '20px',
         }
     },
     outlinedButton:{
