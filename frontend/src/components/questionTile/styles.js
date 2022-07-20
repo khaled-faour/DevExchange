@@ -13,6 +13,7 @@ const styles = createUseStyles({
         borderRadius: '5px',
         backgroundColor: 'transparent',
         transition: '0.2s ease-in-out',
+        boxSizing: 'border-box',
         '&:hover': {
             cursor: 'pointer',
             boxShadow: '0px 2px 5px 0px rgb(20 18 18 / 25%)'
