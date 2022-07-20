@@ -15,6 +15,7 @@ const styles = createUseStyles({
         opacity: 1,
         boxShadow: '0px 0px 100px rgba(20, 18, 18, 0.25)',
         padding: '0',
+        zIndex: '100',
     },
     subItem:{
         cursor: 'pointer',
