@@ -10,7 +10,7 @@ const QuestionTile = ({
     tags=[],
     createdAt,
     createdBy,
-    borderColor="#ECE9EF",
+    borderColor="#cdcdcf",
     answers=[],
 })=>{
     
@@ -28,7 +28,7 @@ const QuestionTile = ({
 
             <div className={classes.tags}>
                 <div>
-                    {tags.map(tag=><Tag title={tag}/>)}
+                    {tags.map((tag, index)=><Tag key={index} title={tag}/>)}
                 </div>
                 {answers.length > 0 && <Tag title='Answered' color={colors.success}/>}
             </div>
