@@ -31,6 +31,7 @@ const postSchema = new mongoose.Schema({
         ref: 'vote',
         required: false,
     }],
+    is_correct: {type: Boolean, required: false},
   
 }, { timestamps: true });
 
