@@ -13,8 +13,9 @@ const styles = createUseStyles({
             padding: '10px',
             border: '1px solid #ccc',
             borderRadius: '5px',
-            fontSize: '1.2rem',
+            fontSize: '16px',
             boxSizing: 'border-box',
+            fontFamily: 'Roboto',
             '&:focus': {
                 outline: 'none',
             }
