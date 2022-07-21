@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles';
 import Avatar from '../../components/avatar/avatar';
-import UserCards from '../../components/userCard/userCards';
+import UserCard from '../../components/userCard/userCards';
+import Comment from '../../components/comment/comment';
 
 // Material UI
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -10,12 +11,11 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const Post = (props)=>{
     const classes = styles();
-    const {title, content, user, createdAt} = props.post;
+    const {title, content, user, createdAt, comments} = props.post;
     const handleVote = (type)=>{
         console.log(type);
     }
 
-    
     return(
         <div className={classes.container}>
             <div className={classes.innerContainer}>
@@ -38,8 +38,17 @@ const Post = (props)=>{
 
             <div className={classes.details}>
                 <div>Asked at <span>{new Date(createdAt).toLocaleString()}</span></div>
-                <UserCards user={user}/>
+                <UserCard user={user}/>
             </div>
+            <hr/>
+            {comments.map((comment, index)=>{
+                return(
+                    <div key={index} className={classes.comments}>
+                        <Comment comment={comment}/>
+                    </div>
+                )
+            })}
+            
         </div>
     )
 }

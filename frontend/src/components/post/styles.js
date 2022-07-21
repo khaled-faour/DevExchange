@@ -33,13 +33,15 @@ const styles = createUseStyles({
         }
     },
     details:{
-        position: 'absolute',
-        right: '10px',
-        bottom: '10px',
         display: 'flex',
         flexDirection: 'column',
-        width: 'fit-content',
+        width: '100%',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
     },
+    comments:{
+        marginTop: '5px',
+    }
 });
 
 export default styles;
