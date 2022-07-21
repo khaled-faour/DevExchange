@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styles from './styles';
 import Avatar from '../avatar/avatar';
 
-const UserCards = ({user}) => {
+const UserCard = ({user}) => {
     const classes = styles();
-
+    
     return (
         <div className={classes.userCard}>
             <Avatar user={user}/>
@@ -16,4 +16,4 @@ const UserCards = ({user}) => {
     )
 }
 
-export default UserCards;
+export default UserCard;
