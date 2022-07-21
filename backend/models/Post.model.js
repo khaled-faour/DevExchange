@@ -21,6 +21,16 @@ const postSchema = new mongoose.Schema({
         required: false
     }],
     tags: [{type: String, required: false}],
+    up_votes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'vote',
+        required: false,
+    }],
+    down_votes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'vote',
+        required: false,
+    }],
   
 }, { timestamps: true });
 
