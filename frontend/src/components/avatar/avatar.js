@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles';
 
-const Avatar = ({url}) => {
+const Avatar = ({url, user}) => {
     const classes = styles();
     return (
         <div className={classes.avatar}>
-            <img src={url}/>
+            {url ? <img src={url}/> : <div className={classes.avatarPlaceholder}>{user?.first_name[0] ?? "A"}{user?.last_name[0] ?? "B"}</div>}
         </div>
     );
 }
