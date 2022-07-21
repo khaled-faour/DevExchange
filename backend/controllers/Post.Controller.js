@@ -32,10 +32,31 @@ const getAll = async (req, res)=>{
 
 const getById = async (req, res)=>{
     try {
-        Post.findById(req.params.id).populate("answers comments")
+        // Post.findById(req.params.id).populate("answers comments user")
+        Post.findById(req.params.id)
+        // populate user
+        .populate({
+            path: 'user',
+            model: 'user',
+        })
+        // popilate answers with nested user
+        .populate({
+            path: 'answers',
+            populate: {
+                path: 'user'
+            }
+        })
+        // populate comments with nested user
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user'
+            }
+        })
         .then(data=>{
             res.status(201).json(data);
         })
+    
     } catch (error) {
         console.log(error);
         res.status(500).send(error);
