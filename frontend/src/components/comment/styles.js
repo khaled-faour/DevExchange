@@ -4,8 +4,8 @@ const styles = createUseStyles({
     container:{
         width: '100%',
         paddingLeft: '10px',
-        border: '1px solid #cdcdcf',
-        background: '#cdcdcf',
+        borderBottom: '1px solid #cdcdcf',
+        // background: '#cdcdcf',
         borderRadius: '5px',
         boxSizing: 'border-box',
     },

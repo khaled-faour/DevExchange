@@ -12,7 +12,7 @@ const Comment = ({ comment }) => {
                     &nbsp;– {comment?.user.first_name} {comment?.user.last_name} 
                 </span> 
                 <span>
-                    &nbsp;{new Date(comment?.createdAt).toLocaleString()}
+                    &nbsp;at {new Date(comment?.createdAt).toLocaleString()}
                 </span>
             </p>
         </div>
