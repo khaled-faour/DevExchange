@@ -3,14 +3,17 @@ const Post = require('../models/Post.model');
 
 const addComment = async (req, res)=>{
     try {
-        Comment.create({...req.body})
+        Comment.create({...req.body, user: req.user._id})
         .then(async data=>{
+            const createdData = await Comment.findById(data._id).populate("user");
             if(req.body.post_id){
-                const post = await Post.findById(req.body.post_id);
-                post.comments.push(data.id)
-                post.save()
+                Post.findByIdAndUpdate(req.body.post_id,{
+                    $push: {comments: data._id}
+                }).then((post)=>{
+                    res.status(201).json(createdData);
+                });
             }
-            res.status(201).json(data);
+            
         })
        
     } catch (error) {
