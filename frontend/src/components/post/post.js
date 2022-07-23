@@ -4,6 +4,8 @@ import Avatar from '../../components/avatar/avatar';
 import UserCard from '../../components/userCard/userCards';
 import Comment from '../../components/comment/comment';
 import Button from '../../components/button/button';
+import useAuth from '../../hooks/useAuth';
+import colors from '../../assets/styles/colors';
 
 // Material UI
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -12,14 +14,22 @@ import axios from 'axios';
 
 
 const Post = (props)=>{
+    const auth = useAuth();
     const classes = styles();
-    const {_id: id, title, content, user, createdAt, comments} = props.post;
+    
+    const [post, setPost] = useState(props.post)
     const [commentBox, setCommentBox] = useState(false);
-    const [commentsList, setCommentsList] = useState([...comments]);
     const [comment, setComment] = useState('');
 
     const handleVote = (type)=>{
-        console.log(type);
+        axios.post(`/votes`, {post_id: post._id, type})
+        .then(res=>{
+            if(res.status !== 401){
+                fetchPost()
+            }
+        }).catch(err=>{
+            console.log(err);
+        });
     }
 
     const handleAddComment = ()=>{
@@ -32,45 +42,55 @@ const Post = (props)=>{
 
     const handleSubmitComment = ()=>{
         if(comment.length > 0){
-            axios.post(`/comments`, {post_id: id, content: comment})
+            axios.post(`/comments`, {post_id: post._id, content: comment})
             .then(res=>{
                 setComment('');
                 setCommentBox(false);
-                setCommentsList([...commentsList, res.data]);
-                console.log(res.data);
-
+                setPost({
+                    ...post,
+                    comments: [...post.comments, res.data]
+                })
+                // setCommentsList([...commentsList, res.data]);
             }).catch(err=>{
                 console.log(err);
             })
         }
     }
 
+    const fetchPost = ()=>{
+        axios.get(`/posts/${post._id}`).then(res=>{
+            setPost(res.data);
+        })
+    }
+    useEffect(()=>{
+        fetchPost()
+    }, [])
     return(
         <div className={classes.container}>
             <div className={classes.innerContainer}>
                 <div className={classes.voting}>
                     <div className={classes.voteButton}>
-                        <ArrowDropUpIcon onClick={()=>handleVote('up')}/>
+                        <ArrowDropUpIcon style={{color: post.up_votes.find(vote=>vote.user._id === auth.user._id) ? colors.primary : 'black'}} onClick={()=>handleVote('up')}/>
                     </div>
                     <div className={classes.voteNumber}>
-                        0
+                        {post.up_votes?.length-post.down_votes?.length}
                     </div>
                     <div className={classes.voteButton}>
-                        <ArrowDropDownIcon onClick={()=>handleVote('down')}/>
+                        <ArrowDropDownIcon style={{color: post.down_votes.find(vote=>vote.user._id === auth.user._id) ? colors.primary : 'black'}} onClick={()=>handleVote('down')}/>
                     </div>
                 </div>
                 <div className={classes.content}>
-                    <h3 className={classes.title}>{title ?? " "}</h3>
-                    <p>{content}</p>
+                    <h3 className={classes.title}>{post.title ?? " "}</h3>
+                    <p>{post.content}</p>
                 </div>
             </div>
 
             <div className={classes.details}>
-                <div>Asked at <span>{new Date(createdAt).toLocaleString()}</span></div>
-                <UserCard user={user}/>
+                <div>Asked at <span>{new Date(post.createdAt).toLocaleString()}</span></div>
+                <UserCard user={post.user}/>
             </div>
             <hr/>
-            {commentsList.map((comment, index)=>{
+            {post.comments.map((comment, index)=>{
                 return(
                     <div key={index} className={classes.comments}>
                         <Comment comment={comment}/>
