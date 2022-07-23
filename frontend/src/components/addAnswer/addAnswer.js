@@ -6,7 +6,7 @@ import styles from './styles';
 import axios from 'axios';
 
 
-const AddAnswer = () =>{
+const AddAnswer = ({fetchPosts}) =>{
   const classes= styles();
   const {id} = useParams();
   const [answer, setAnswer] = useState({
@@ -28,7 +28,7 @@ const AddAnswer = () =>{
   const handleSubmit = () =>{
     axios.post('/posts', answer)
     .then(res=>{
-      console.log(res)
+      fetchPosts();
     })
   }
 

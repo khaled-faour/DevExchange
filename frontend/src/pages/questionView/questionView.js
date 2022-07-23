@@ -14,13 +14,17 @@ const QuestionView = (props) => {
     const [loading, setLoading] = useState(true);
     const [addAnswerOpen, setAddAnswerOpen] = useState(false);
 
-    useEffect(() => {
+    const fetchPosts = () => {
         axios.get(`/posts/${id}`).then(res => {
             setPost(res.data);
             setLoading(false);
         }).catch(err => {
             console.log(err);
         })
+    }
+
+    useEffect(() => {
+        fetchPosts();
     }, [id]);
 
     useEffect(() => {
@@ -37,7 +41,7 @@ const QuestionView = (props) => {
                 <Post key={answer.id} post={answer} />
             ))}
 
-            {addAnswerOpen && <AddAnswer />}
+            {addAnswerOpen && <AddAnswer fetchPosts={fetchPosts}/>}
         </div>
     );
 }
