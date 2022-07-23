@@ -2,7 +2,7 @@ const Post = require('../models/Post.model');
 
 const addPost = async (req, res)=>{
     try {
-        Post.create({...req.body})
+        Post.create({...req.body, user: req.user._id})
         .then(async data=>{
             if(req.body.question_id){
                 const question = await Post.findById(req.body.question_id);
