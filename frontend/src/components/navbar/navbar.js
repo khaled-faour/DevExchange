@@ -42,7 +42,7 @@ const Navbar = () => {
             {/* Avatar */}
             <div className={classes.rightMenu} onClick={toggleDropdown}>
                 <div className={classes.balance}><AccountBalanceWalletIcon />: {auth.user.balance}</div>
-                <div className={classes.avatar}><Avatar url={auth.user.profile_picture || "test"}/><ArrowDropDownIcon /></div>
+                <div className={classes.avatar}><Avatar  user={auth.user} /><ArrowDropDownIcon /></div>
             </div>
 
         </nav>
