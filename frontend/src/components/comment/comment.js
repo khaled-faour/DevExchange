@@ -9,7 +9,7 @@ const Comment = ({ comment }) => {
             <p>
                 {comment?.content} 
                 <span className={classes.user}>
-                    &nbsp;– {comment?.user.first_name} {comment?.user.last_name} 
+                    &nbsp;– {comment?.user?.first_name} {comment?.user?.last_name} 
                 </span> 
                 <span>
                     &nbsp;at {new Date(comment?.createdAt).toLocaleString()}
