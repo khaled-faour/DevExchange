@@ -21,6 +21,7 @@ const Post = (props)=>{
     const [post, setPost] = useState(props.post)
     const [commentBox, setCommentBox] = useState(false);
     const [comment, setComment] = useState('');
+    const [commentsLimit, setCommentsLimit] = useState(3);
 
     const handleVote = (type)=>{
         axios.post(`/votes`, {post_id: post._id, type})
@@ -58,6 +59,11 @@ const Post = (props)=>{
         }
     }
 
+    const handleCommentsLimit = () =>{
+        let newLimit = post.comments.length - commentsLimit > 3 ? commentsLimit + 3 : commentsLimit + post.comments.length - commentsLimit;
+        setCommentsLimit(newLimit);
+    }
+
     const fetchPost = ()=>{
         axios.get(`/posts/${post._id}`).then(res=>{
             setPost(res.data);
@@ -93,15 +99,27 @@ const Post = (props)=>{
                 </div>
             </div>
             <hr/>
-            {post.comments.map((comment, index)=>{
+            {post.comments.filter((item, idx) => idx < commentsLimit).map((comment, index)=>{
                 return(
                     <div key={index} className={classes.comments}>
                         <Comment comment={comment}/>
                     </div>
                 )
             })}
+            {
+                post.comments.length - commentsLimit > 0 && 
+                <div className={classes.moreComments}>
+                    <a onClick={handleCommentsLimit}>
+                        Load more(
+                            {post.comments.length - commentsLimit > 3 ? 3 : post.comments.length - commentsLimit}
+                        )
+                    </a>
+                </div>
+            }
             {!commentBox ? 
-            <a className={classes.showCommentBoxButton} onClick={handleAddComment}>Add comment</a>
+            <div className={classes.addCommentButtonContainer}>
+                <a className={classes.showCommentBoxButton} onClick={handleAddComment}>Add comment</a>
+            </div>
             : 
             <div className={classes.addComment}>
                 <textarea className={classes.commentBox} value={comment} onChange={handleCommentChange} placeholder="Add a comment..."></textarea>

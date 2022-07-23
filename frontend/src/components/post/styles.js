@@ -51,6 +51,9 @@ const styles = createUseStyles({
     comments:{
         marginTop: '5px',
     },
+    addCommentButtonContainer:{
+        paddingTop: '10px',
+    },
     showCommentBoxButton:{
         textDecoration: 'none',
         color: colors.primary,
@@ -107,6 +110,13 @@ const styles = createUseStyles({
             cursor: 'pointer',
         }
     },
+    moreComments:{
+        textDecoration: 'none',
+        color: colors.primary,
+        '&:hover':{
+            cursor: 'pointer'
+        }
+    }
 
 });
 
