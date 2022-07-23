@@ -6,6 +6,7 @@ import Comment from '../../components/comment/comment';
 import Button from '../../components/button/button';
 import useAuth from '../../hooks/useAuth';
 import colors from '../../assets/styles/colors';
+import Editor from '../../components/richTextEditor/richTextEdit';
 
 // Material UI
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -81,7 +82,8 @@ const Post = (props)=>{
                 </div>
                 <div className={classes.content}>
                     <h3 className={classes.title}>{post.title ?? " "}</h3>
-                    <p>{post.content}</p>
+                    {/* <div dangerouslySetInnerHTML={createMarkup(post.content)}></div> */}
+                    <Editor value={post.content} readOnly />
                 </div>
             </div>
             <div className={classes.userCardContainer}>
