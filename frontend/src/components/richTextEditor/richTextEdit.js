@@ -6,7 +6,7 @@ const Editor = ({onChange, value, readOnly = false}) => {
 
   return <RichTextEditor
     readOnly={readOnly}
-    style={{border: readOnly ? 'none' : '1px solid #ccc'}}
+    style={{border: readOnly ? 'none' : '1px solid #ccc', width: '100%'}}
     value={value} 
     onChange={onChange} 
     controls={[

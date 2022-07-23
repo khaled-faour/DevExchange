@@ -4,6 +4,7 @@ import Button from '../../components/button/button';
 import Editor from '../../components/richTextEditor/richTextEdit';
 import TagSelect from 'react-select'
 import styles from './styles';
+import axios from 'axios';
 
 // Material UI
 import TextField from '@mui/material/TextField';
@@ -12,7 +13,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import axios from 'axios';
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
+import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 
 const AddQuestion = ({isOpen, setIsOpen}) => {
   const classes = styles();
@@ -59,12 +61,23 @@ const AddQuestion = ({isOpen, setIsOpen}) => {
     })
   }
 
+  const handleFullScreen = () => {
+    setFullScreen(!fullScreen);
+  }
+
   useEffect(() => {
     console.log(question);
   }, [question]);
   return (
       <Dialog open={isOpen} onClose={handleClose} fullWidth fullScreen = {fullScreen}>
-        <DialogTitle>Add Question</DialogTitle>
+        <DialogTitle>
+          <div className={classes.header}>
+            <div className={classes.title}>Add Question</div>
+            <div className={classes.close} onClick={handleFullScreen}>
+              {fullScreen ? <CloseFullscreenIcon/> : <OpenInFullIcon/>}
+            </div>
+          </div>
+        </DialogTitle>
         <DialogContent className={classes.content}>
         <Input placeholder="Title" value={question.title} onChange={handleTitleChange}/>
         <TagSelect className={classes.tagsFilter} options={tagOptions} isMulti onChange={handleTagsChange} value={question.tags[0]?.value}/>
