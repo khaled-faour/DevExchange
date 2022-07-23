@@ -4,7 +4,7 @@ const postContorller = require('../controllers/Post.Controller');
 const isAdmin = require('../middlewares/admin.middleware');
 
 
-router.post("/", isAdmin, postContorller.addPost);
+router.post("/", postContorller.addPost);
 router.put("/:id", isAdmin, postContorller.updateById);
 router.delete("/:id", isAdmin, postContorller.deleteById);
 router.get("/", postContorller.getAll);
