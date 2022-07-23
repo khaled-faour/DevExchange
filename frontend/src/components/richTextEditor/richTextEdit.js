@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { RichTextEditor } from '@mantine/rte';
 import './styles.css';
 
-const Editor = ({onChange, value}) => {
+const Editor = ({onChange, value, readOnly = false}) => {
 
-
-  return <RichTextEditor 
+  return <RichTextEditor
+    readOnly={readOnly}
+    style={{border: readOnly ? 'none' : '1px solid #ccc'}}
     value={value} 
     onChange={onChange} 
     controls={[
