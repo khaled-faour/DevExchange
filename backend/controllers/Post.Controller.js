@@ -39,16 +39,43 @@ const getById = async (req, res)=>{
             path: 'user',
             model: 'user',
         })
-        // popilate answers with nested user
+        // populate answers with nested user 
+
         .populate({
             path: 'answers',
             populate: {
-                path: 'user'
-            }
+                path: 'user',
+            },
+        })
+        // populate answers with nested up votes and down votes
+        .populate({
+            path: 'answers',
+            populate: {
+                path: 'up_votes',
+            },
+        })
+        .populate({
+            path: 'answers',
+            populate: {
+                path: 'down_votes',
+            },
         })
         // populate comments with nested user
         .populate({
             path: 'comments',
+            populate: {
+                path: 'user'
+            },
+            
+        })
+        .populate({
+            path: 'up_votes',
+            populate: {
+                path: 'user'
+            }
+        }).
+        populate({
+            path: 'down_votes',
             populate: {
                 path: 'user'
             }
