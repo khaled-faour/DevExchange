@@ -32,12 +32,17 @@ const styles = createUseStyles({
             color: colors.primary
         }
     },
+    userCardContainer:{
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+    },
     details:{
         display: 'flex',
         flexDirection: 'column',
-        width: '100%',
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
     },
     comments:{
         marginTop: '5px',
@@ -97,7 +102,7 @@ const styles = createUseStyles({
             filter: 'brightness(0.8)',
             cursor: 'pointer',
         }
-    }
+    },
 
 });
 

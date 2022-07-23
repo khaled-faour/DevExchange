@@ -84,10 +84,11 @@ const Post = (props)=>{
                     <p>{post.content}</p>
                 </div>
             </div>
-
-            <div className={classes.details}>
-                <div>Asked at <span>{new Date(post.createdAt).toLocaleString()}</span></div>
-                <UserCard user={post.user}/>
+            <div className={classes.userCardContainer}>
+                <div className={classes.details}>
+                    <div>Asked at <span>{new Date(post.createdAt).toLocaleString()}</span></div>
+                    <UserCard user={post.user}/>
+                </div>
             </div>
             <hr/>
             {post.comments.map((comment, index)=>{
