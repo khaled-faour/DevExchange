@@ -4,6 +4,7 @@ import axios from 'axios';
 import styles from './styles';
 import Button from '../../components/button/button';
 import Input from '../../components/input/input';
+import AddQuestion from '../../components/addQuestion/addQuestion';
 import TagSelect from 'react-select'
 
 // Material UI
@@ -16,6 +17,7 @@ const Questions = () => {
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [addPostOpen, setAddPostOpen] = useState(false)
     const [filters, setFilters] = useState({
         tags: [],
         search: '',
@@ -68,6 +70,10 @@ const Questions = () => {
         })
     }
 
+    const handleOpenAddPost = ()=>{
+        setAddPostOpen(true);
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -114,7 +120,7 @@ const Questions = () => {
 
                 {/* Add Question Button */}
                 <Grid item xs={12} md={3}>
-                    <Button leftIcon={<AddIcon/>} fullWidth rounded>Add Question</Button>
+                    <Button leftIcon={<AddIcon/>} onClick={handleOpenAddPost} fullWidth rounded>Add Question</Button>
                 </Grid>
             </Grid>
 
@@ -171,6 +177,7 @@ const Questions = () => {
                     </Grid>
                 </Grid>
             </Grid>
+            <AddQuestion isOpen={addPostOpen} setIsOpen={setAddPostOpen}/>
         </div>
     );
 }
