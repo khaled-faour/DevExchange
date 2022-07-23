@@ -24,8 +24,6 @@ const QuestionView = (props) => {
     }, [id]);
 
     useEffect(() => {
-        console.log("can answer: ", (post?.answers?.find(answer=>answer.user._id === auth.user._id) === undefined))
-        console.log("found: ", post?.answers?.find(answer=>answer.user._id === auth.user._id))
         setAddAnswerOpen((post?.answers?.find(answer=>answer.user._id === auth.user._id) === undefined))
     }, [post]);
 
