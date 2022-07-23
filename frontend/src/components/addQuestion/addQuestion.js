@@ -15,16 +15,29 @@ import DialogTitle from '@mui/material/DialogTitle';
 const AddQuestion = ({isOpen, setIsOpen}) => {
   const classes = styles();
   const [fullScreen, setFullScreen] = useState(false);
+  const [question, setQuestion] = useState({title:'', content: ''});
+  
   const handleClose = () => {
     setIsOpen(false);
   };
 
+  const handleTitleChange = (event) => {
+    setQuestion({...question, title: event.target.value});
+  };
+
+  const handleContentChange = (content) => {
+    setQuestion({...question, content});
+  };
+
+  useEffect(() => {
+    console.log(question);
+  }, [question]);
   return (
       <Dialog open={isOpen} onClose={handleClose} fullWidth fullScreen = {fullScreen}>
         <DialogTitle>Add Question</DialogTitle>
         <DialogContent className={classes.content}>
-        <Input placeholder="Title" />
-        <Editor />
+        <Input placeholder="Title" value={question.title} onChange={handleTitleChange}/>
+        <Editor value={question.content} onChange={handleContentChange}/>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} outlined>Cancel</Button>

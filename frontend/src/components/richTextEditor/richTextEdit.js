@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { RichTextEditor } from '@mantine/rte';
 import './styles.css';
 
-const Editor = () => {
-  const [value, onChange] = useState('');
+const Editor = ({onChange, value}) => {
 
 
   return <RichTextEditor 
