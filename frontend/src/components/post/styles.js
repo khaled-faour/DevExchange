@@ -28,9 +28,13 @@ const styles = createUseStyles({
     },
     voteButton:{
         cursor: 'pointer',
-        '&:hover':{
-            color: colors.primary
+        '& svg':{
+            fontSize: '40px',
+            '&:hover':{
+                color: colors.primary,
+            },
         }
+        
     },
     userCardContainer:{
         width: '100%',
