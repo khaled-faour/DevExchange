@@ -12,6 +12,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import axios from 'axios';
 
 const AddQuestion = ({isOpen, setIsOpen}) => {
   const classes = styles();
@@ -49,7 +50,14 @@ const AddQuestion = ({isOpen, setIsOpen}) => {
       ...question,
       tags
     });
-}
+  }
+
+  const handleSubmit = () =>{
+    axios.post('/posts', question)
+    .then(res=>{
+      console.log(res)
+    })
+  }
 
   useEffect(() => {
     console.log(question);
@@ -64,7 +72,7 @@ const AddQuestion = ({isOpen, setIsOpen}) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} outlined>Cancel</Button>
-          <Button onClick={handleClose}>Submit</Button>
+          <Button onClick={handleSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>
   );
