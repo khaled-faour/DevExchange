@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Input from '../../components/input/input';
 import Button from '../../components/button/button';
 import Editor from '../../components/richTextEditor/richTextEdit';
+import TagSelect from 'react-select'
 import styles from './styles';
 
 // Material UI
@@ -15,8 +16,21 @@ import DialogTitle from '@mui/material/DialogTitle';
 const AddQuestion = ({isOpen, setIsOpen}) => {
   const classes = styles();
   const [fullScreen, setFullScreen] = useState(false);
-  const [question, setQuestion] = useState({title:'', content: ''});
-  
+  const [question, setQuestion] = useState({title:'', content: '', tags: []});
+  const [tags, setTags] = useState([]);
+
+  const tagOptions = [
+    {value: 'React', label: 'React'},
+    {value: 'Javascript', label: 'Javascript'},
+    {value: 'Node.js', label: 'Node.js'},
+    {value: 'Express', label: 'Express'},
+    {value: 'MongoDB', label: 'MongoDB'},
+    {value: 'Mongoose', label: 'Mongoose'},
+    {value: 'GraphQL', label: 'GraphQL'},
+    {value: 'Apollo', label: 'Apollo'},
+    {value: 'React-Native', label: 'React-Native'},
+    {value: 'React-Router', label: 'React-Router'},
+]
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -29,6 +43,14 @@ const AddQuestion = ({isOpen, setIsOpen}) => {
     setQuestion({...question, content});
   };
 
+  const handleTagsChange = (e) => {
+    let tags = [...e.map(item => item.value)];
+    setQuestion({
+      ...question,
+      tags
+    });
+}
+
   useEffect(() => {
     console.log(question);
   }, [question]);
@@ -37,6 +59,7 @@ const AddQuestion = ({isOpen, setIsOpen}) => {
         <DialogTitle>Add Question</DialogTitle>
         <DialogContent className={classes.content}>
         <Input placeholder="Title" value={question.title} onChange={handleTitleChange}/>
+        <TagSelect className={classes.tagsFilter} options={tagOptions} isMulti onChange={handleTagsChange} value={question.tags[0]?.value}/>
         <Editor value={question.content} onChange={handleContentChange}/>
         </DialogContent>
         <DialogActions>

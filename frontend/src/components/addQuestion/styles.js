@@ -8,6 +8,10 @@ const styles = createUseStyles({
         justifyContent: 'flex-start',
         gap: '20px',
     },
+    tagsFilter:{
+        width: '100%',
+        zIndex: '9999',
+    }
 });
 
 export default styles;
