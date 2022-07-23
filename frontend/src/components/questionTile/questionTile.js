@@ -14,6 +14,7 @@ const QuestionTile = ({
     createdBy,
     borderColor="#cdcdcf",
     answers=[],
+    user
 })=>{
     
     const classes = styles();
@@ -26,7 +27,7 @@ const QuestionTile = ({
     return (
         <div className={classes.container} style={{borderColor: borderColor}} onClick={handleNavigation}>
             <div className={classes.avatar}>
-                <Avatar url={auth.user.profile_picture} />
+                <Avatar url={user.profile_picture} />
             </div>
             <div className={classes.content}>
                 <h3 className={classes.title}>{title}</h3>
