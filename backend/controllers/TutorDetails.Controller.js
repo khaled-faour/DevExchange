@@ -35,7 +35,6 @@ const getAll = async (req, res)=>{
                     console.log(err)
                 })
             }
-            console.log("finaltutorsArray: ", tutorsArray);
             res.status(200).json(tutorsArray);
         })
     } catch (error) {
@@ -46,9 +45,24 @@ const getAll = async (req, res)=>{
 
 const getById = async (req, res)=>{
     try {
-        TutorDetails.findById(req.params.id).populate("user")
-        .then(data=>{
-            res.status(201).json(data);
+       TutorDetails.findById(req.params.id)
+        .populate("user", "first_name last_name profile_picture")
+        .populate({
+            path: "reviews",
+            populate: {
+                path: "user",
+                select: "first_name last_name profile_picture"
+            }
+        })
+        .then(async tutor=>{
+            await Review.aggregate([
+                {$match: {_id: {$in: tutor.reviews}}},
+                {$group: {_id: "$tutor", average: {$avg: '$rate'}}}
+            ]).then(data=>{
+                res.status(200).json({...tutor._doc, average: data[0]?.average ?? 0});
+            }).catch(err=>{
+                console.log(err)
+            })
         })
     } catch (error) {
         console.log(error);
