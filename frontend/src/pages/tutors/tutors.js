@@ -141,7 +141,7 @@ const Tutors = () => {
                     .filter(question=>filters.tags.length > 0 ? question.tags.some(tag=>filters.tags.includes(tag)):true)
                     .sort((a,b)=>sortTutors(a,b))
                     .map(tutor => {
-                        return <TutorCard key={tutor.id} tutor={tutor} />
+                        return <TutorCard key={tutor.id} tutor={tutor} showProfiles={false}/>
                     })}
                 </div>
             </Grid>
