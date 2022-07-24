@@ -1,5 +1,6 @@
 const TutorDetails = require('../models/TutorDetails.model');
 const User = require('../models/User.model');
+const Review = require('../models/Review.model');
 
 const addTutorDetails = async (req, res)=>{
     try {
@@ -19,9 +20,23 @@ const addTutorDetails = async (req, res)=>{
 
 const getAll = async (req, res)=>{
     try {
+        const tutorsArray = [];
         TutorDetails.find()
-        .then(data=>{
-            res.status(201).json(data);
+        .populate("user", "first_name last_name profile_picture") 
+        .then(async data=>{
+            for(const tutor of data){
+                await Review.aggregate([
+                    {$match: {_id: {$in: tutor.reviews}}},
+                    {$group: {_id: "$tutor", average: {$avg: '$rate'}}}
+                ]).then(data=>{
+                    tutorsArray.push({...tutor._doc, average: data[0]?.average ?? 0});
+                    tutorsArray
+                }).catch(err=>{
+                    console.log(err)
+                })
+            }
+            console.log("finaltutorsArray: ", tutorsArray);
+            res.status(200).json(tutorsArray);
         })
     } catch (error) {
         console.log(error);
