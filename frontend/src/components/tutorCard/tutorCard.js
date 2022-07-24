@@ -2,14 +2,22 @@ import React, { useState, useEffect } from 'react';
 import styles from './styles';
 import Button from '../button/button';
 import useAuth from '../../hooks/useAuth';
+import {useNavigate} from 'react-router-dom';
 
 // Material UI
 import StarIcon from '@mui/icons-material/Star';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import PaymentsOutlinedIcon from '@mui/icons-material/PaymentsOutlined';
+
 const TutorCard = ({ tutor }) => {
     const classes = styles();
     const auth = useAuth();
+    const navigate = useNavigate();
+
+    const handleNavigation = ()=>{
+        navigate(`/tutors/${tutor._id}`);
+    }
+
     return (
         <div className={classes.tutorCard}>
             <div className={classes.tutorCardContent}>
@@ -26,7 +34,7 @@ const TutorCard = ({ tutor }) => {
                 </div>
             </div>
             <div className={classes.tutorCardButtons}>
-                <Button rounded outlined>View</Button>
+                <Button rounded outlined onClick={handleNavigation}>View</Button>
                 <Button rounded>Book</Button>
             </div>
         </div>
