@@ -63,6 +63,17 @@ const styles = createUseStyles({
         color: "#8a8a8a",
         fontSize: "1rem",
     },
+    tutorCardInfoProfiles:{
+        paddingTop: "1rem",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        gap: "0.5rem",
+        '& img':{
+            width: "30px",
+        }
+    },
     tutorCardButtons:{
         display: "flex",
         flexDirection: "column",
