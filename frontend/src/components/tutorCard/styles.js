@@ -11,6 +11,7 @@ const styles = createUseStyles({
         padding: "1rem",
         border: '1px solid #cdcdcf',
         borderRadius: "5px",
+        boxSizing: "border-box",
         "&:hover": {
             cursor: "pointer",
             boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
