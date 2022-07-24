@@ -12,9 +12,6 @@ const styles = createUseStyles({
         border: '1px solid #cdcdcf',
         borderRadius: "5px",
         boxSizing: "border-box",
-        "&:hover": {
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
-        },
     },
     tutorCardContent: {
         display: "flex",
