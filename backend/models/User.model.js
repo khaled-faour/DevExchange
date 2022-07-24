@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
     tutor_details: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'tutorDetails',
+        required: false
     }
 }, { timestamps: true });
 
