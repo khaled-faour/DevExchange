@@ -1,9 +1,15 @@
 const Review = require('../models/Review.model');
+const TutorDetails = require('../models/TutorDetails.model');
 
 const addReview = async (req, res)=>{
     try {
         Review.create({...req.body, user: req.user._id})
         .then(async data=>{
+            await TutorDetails.findByIdAndUpdate(req.body.tutor, {
+                $push:{
+                    reviews: data._id
+                }
+            })
             res.status(201).json(data);
         })
        
