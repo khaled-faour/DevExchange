@@ -47,6 +47,7 @@ const getById = async (req, res)=>{
     try {
        TutorDetails.findById(req.params.id)
         .populate("user", "first_name last_name profile_picture github_url linkedin_url")
+        .populate("reviews")
         .populate({
             path: "reviews",
             populate: {
