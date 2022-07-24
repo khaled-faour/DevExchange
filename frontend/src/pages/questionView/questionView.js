@@ -12,7 +12,7 @@ const QuestionView = (props) => {
     const { id } = useParams();
     const [post, setPost] = useState({});
     const [loading, setLoading] = useState(true);
-    const [addAnswerOpen, setAddAnswerOpen] = useState(false);
+    const [addAnswerOpen, setAddAnswerOpen] = useState(true);
 
     const fetchPosts = () => {
         axios.get(`/posts/${id}`).then(res => {
@@ -28,7 +28,11 @@ const QuestionView = (props) => {
     }, [id]);
 
     useEffect(() => {
-        setAddAnswerOpen((post?.answers?.find(answer=>answer.user._id === auth.user._id) === undefined))
+        let userAnswer = post?.answers?.find(answer=>answer.user._id === auth.user._id) === undefined;
+        let isUserQuestion = post?.user?._id === auth.user._id;
+        if(!userAnswer || isUserQuestion){
+            setAddAnswerOpen(false);
+        }
     }, [post]);
 
     return (
