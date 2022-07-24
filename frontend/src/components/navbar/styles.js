@@ -49,6 +49,17 @@ const styles = createUseStyles({
             }
         }
     },
+    selectedLink:{
+        fontSize: '16px',
+        color: 'white',
+        textDecoration: 'none',
+        boxSizing: 'border-box',
+        cursor: 'pointer',
+        textDecoration: 'underline',
+        textDecorationColor: 'white',
+        textDecorationThickness: '3px',
+        textUnderlineOffset: '15px',
+    },
     rightMenu:{
         display: 'flex',
         alignItems: 'center',
