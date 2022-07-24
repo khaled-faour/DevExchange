@@ -5,6 +5,7 @@ import Container from "../components/container/container";
 import Questions from "../pages/questions/questions";
 import QuestionView from "../pages/questionView/questionView";
 import Tutors from "../pages/tutors/tutors";
+import TutorView from "../pages/tutorView/tutorView";
 
 const Router = () => {
     return(
@@ -24,6 +25,7 @@ const Router = () => {
                     {/* Tutor Routes */}
                     <Route path="tutors">
                             <Route index element={<Tutors />} />
+                            <Route path=":id" element={<TutorView />} />
                     </Route>
                     <Route path="*" element={<Home />} />
                 </Routes>
