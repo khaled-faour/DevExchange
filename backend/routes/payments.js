@@ -4,7 +4,7 @@ const paymentsController = require('../controllers/Payment.Controller');
 const isAdmin = require('../middlewares/admin.middleware');
 
 
-router.post("/", isAdmin, paymentsController.addPayment);
+router.post("/", paymentsController.addPayment);
 router.put("/:id", isAdmin, paymentsController.updateById);
 router.delete("/:id", isAdmin, paymentsController.deleteById);
 router.get("/", paymentsController.getAll);
