@@ -4,6 +4,7 @@ import Button from '../button/button';
 import useAuth from '../../hooks/useAuth';
 import {useNavigate} from 'react-router-dom';
 import TruncatedText from '../../components/truncatedText/truncatedText';
+import BookingModal from '../../components/bookingModal/bookingModal';
 import githubIcon from '../../assets/images/github-icon.svg';
 import linkedInIcon from '../../assets/images/linkedIn-icon.svg';
 
@@ -16,9 +17,18 @@ const TutorCard = ({ tutor, showDescription = true, showProfiles = true, showVie
     const classes = styles();
     const auth = useAuth();
     const navigate = useNavigate();
+    const [showBookingModal, setShowBookingModal] = useState(false);
 
     const handleNavigation = ()=>{
         navigate(`/tutors/${tutor._id}`);
+    }
+
+    const handleBook = ()=>{
+        setShowBookingModal(true); 
+    }
+    
+    const handleCloseBookinModal = ()=>{
+        setShowBookingModal(false); 
     }
 
     return (
@@ -48,8 +58,9 @@ const TutorCard = ({ tutor, showDescription = true, showProfiles = true, showVie
             </div>
             <div className={classes.tutorCardButtons}>
                 {showViewButton && <Button rounded outlined onClick={handleNavigation}>View</Button>}
-                <Button rounded>Book</Button>
+                <Button onClick={handleBook} rounded>Book</Button>
             </div>
+            <BookingModal tutor={tutor} open={showBookingModal} onClose={handleCloseBookinModal}/>
         </div>
     );
 }
