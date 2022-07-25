@@ -6,6 +6,7 @@ import Questions from "../pages/questions/questions";
 import QuestionView from "../pages/questionView/questionView";
 import Tutors from "../pages/tutors/tutors";
 import TutorView from "../pages/tutorView/tutorView";
+import BundlesView from "../pages/bundlesView/bundlesView";
 
 const Router = () => {
     return(
@@ -27,6 +28,7 @@ const Router = () => {
                             <Route index element={<Tutors />} />
                             <Route path=":id" element={<TutorView />} />
                     </Route>
+                    <Route path="bundles" element={<BundlesView />} /> 
                     <Route path="*" element={<Home />} />
                 </Routes>
             </Container>
