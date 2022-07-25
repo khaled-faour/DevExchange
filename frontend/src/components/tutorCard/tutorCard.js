@@ -3,7 +3,7 @@ import styles from './styles';
 import Button from '../button/button';
 import useAuth from '../../hooks/useAuth';
 import {useNavigate} from 'react-router-dom';
-
+import TruncatedText from '../../components/truncatedText/truncatedText';
 import githubIcon from '../../assets/images/github-icon.svg';
 import linkedInIcon from '../../assets/images/linkedIn-icon.svg';
 
@@ -33,7 +33,13 @@ const TutorCard = ({ tutor, showDescription = true, showProfiles = true, showVie
                     <div className={classes.tutorCardInfoStat}><StarIcon/> {tutor.average.toFixed(1)} </div>
                     <div className={classes.tutorCardInfoStat}><ArticleOutlinedIcon/> {tutor.reviews.length} reviews</div>
                     <div className={classes.tutorCardInfoStat}><PaymentsOutlinedIcon/> {tutor.hourly_rate} coins/hour.</div>
-                    {showDescription && <p className={classes.tutorCardInfoBio}>{tutor.description}</p>}
+                    {showDescription && 
+                        <TruncatedText lines={2}>
+                            <p className={classes.tutorCardInfoBio}>
+                                {tutor.description}
+                            </p>
+                        </TruncatedText>
+                    }
                     {showProfiles && <div className={classes.tutorCardInfoProfiles}>
                         {tutor.user.github_url && <a href={tutor.user.github_url} target="_blank" rel="noopener noreferrer"><img src={githubIcon} alt="Github"/></a>}
                         {tutor.user.linkedin_url && <a href={tutor.user.linkedin_url} target="_blank" rel="noopener noreferrer"><img src={linkedInIcon} alt="LinkedIn"/></a>}

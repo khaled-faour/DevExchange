@@ -74,7 +74,7 @@ const styles = createUseStyles({
     tutorCardButtons:{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-end",
+        justifyContent: "center",
         alignItems: "flex-end",
         width: "100%",
         height: "100%",
