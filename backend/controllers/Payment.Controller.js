@@ -1,10 +1,23 @@
 const Payment = require('../models/Payment.model');
-
+const User = require('../models/User.model');
 const addPayment = async (req, res)=>{
     try {
         Payment.create({...req.body, user: req.user._id})
         .then(async data=>{
-            res.status(201).json(data);
+            data.populate("bundle").then(async data=>{
+                User.findByIdAndUpdate(req.user._id, {
+                    $inc:{
+                        balance: data.bundle.amount
+                    }
+                }).then(async data=>{
+                    const user = await User.findById(req.user._id);
+                    res.status(201);
+                })
+            })
+           
+            // User.findByIdAndUpdate(req.user._id, {
+            //     $inc: {balance: data.amount}
+            // res.status(201).json(data);
         })
        
     } catch (error) {
