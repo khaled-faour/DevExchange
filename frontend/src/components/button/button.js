@@ -8,7 +8,8 @@ const Button = ({
     fullWidth = false, 
     rounded=false, 
     leftIcon,
-    rightIcon
+    rightIcon,
+    disabled = false
 }) => {
     const classes = styles();
     return (
@@ -19,6 +20,7 @@ const Button = ({
                 rounded? classes.rounded : ''
             ].join(' ')}
             onClick={onClick}
+            disabled={disabled}
             // onMouseEnter={() => setIsHovered(true)}
             // onMouseLeave={() => setIsHovered(false)}
         >   

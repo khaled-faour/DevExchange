@@ -19,6 +19,14 @@ const styles = createUseStyles({
         },
         '& svg': {
             fontSize: '20px',
+        },
+        '&:disabled': {
+            backgroundColor: '#ccc',
+            color: '#fff',
+            cursor: 'not-allowed',
+            '&:hover': {
+                filter: 'none',
+            }
         }
     },
     outlinedButton:{
