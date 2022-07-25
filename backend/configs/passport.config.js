@@ -21,6 +21,7 @@ passport.use(new GitHubStrategy({
   callbackURL: `http://localhost:4001/api/auth/github/callback`
     },
     function(accessToken, refreshToken, profile, done) {
+      console.log("email: ", profile._json.email);
       User.findOne({provider_id: profile.id, provider: profile.provider}, async (err, user)=>{
         if(err) return done(err);
         if(!user){
@@ -31,6 +32,7 @@ passport.use(new GitHubStrategy({
               first_name: profile.displayName.split(" ")[0],
               last_name: profile.displayName.split(" ")[1],
               profile_picture: profile.photos[0].value,
+              email: profile.emails[0].value._json.email
             })
            return done(null, createdUser)
           } catch(error) {
@@ -59,6 +61,7 @@ passport.use(new GoogleStrategy({
             first_name: profile.name.givenName,
             last_name: profile.name.familyName,
             profile_picture: profile.photos[0].value,
+            email: profile.emails[0].value,
           })
           return done(null, createdUser)
         } catch (error) {
@@ -72,7 +75,8 @@ passport.use(new GoogleStrategy({
 
 passport.use(new LocalStrategy({usernameField: "email", passwordField: "password"},
   function(username, password, done) {
-    User.findOne({email: username}, (err, user) => {
+    User.findOne({email: username, provider:{$eq: null}}, (err, user) => {
+      console.log(user)
       if (err) {
         return done(err)
       }

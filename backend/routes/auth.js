@@ -18,7 +18,7 @@ function(req, res) {
 });
 
 //Gogole Signin
-router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/auth/error' }),
   function(req, res) {
     res.redirect(process.env.REDIRECT_URI);
