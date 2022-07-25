@@ -21,8 +21,8 @@ const Dropdown = ({open}) => {
               <PersonIcon className={classes.icon} />
               <p>Profile</p>
             </li>
-            <li className={classes.subItem}>
-              <CreditCardIcon className={classes.icon} onClick={()=>navigate('bundles')}/>
+            <li className={classes.subItem} onClick={()=>navigate('bundles')}>
+              <CreditCardIcon className={classes.icon} />
               <p>Add Balance</p>
             </li>
             <li className={classes.subItem} onClick={auth.logout}>
