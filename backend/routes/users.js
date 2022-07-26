@@ -5,5 +5,6 @@ const isAdmin = require('../middlewares/admin.middleware');
 
 
 router.get("/:id", userController.getById);
+router.put("/:id", userController.updateById);
 
 module.exports = router;
