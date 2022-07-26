@@ -22,8 +22,6 @@ const styles = createUseStyles({
         },
         '& label': {
            width: '100%',
-           position: 'relative',
-           left: '-10px',
         },
         '& .error': {
             position: 'relative',
