@@ -68,6 +68,9 @@ app.use('/api/userTypes', authMiddleware, userTypesRouter)
 const votesRoutes = require('./routes/votes');
 app.use('/api/votes', authMiddleware, votesRoutes);
 
+const usersRoutes = require('./routes/users');
+app.use('/api/users', authMiddleware, usersRoutes);
+
 app.listen(4001, ()=>{
     console.log(`Server running on port 4001`);
 })
