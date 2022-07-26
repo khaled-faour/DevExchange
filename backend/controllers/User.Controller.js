@@ -2,21 +2,33 @@ const User = require("../models/User.model");
 const bcrypt = require('bcryptjs');
 
 
-module.exports = {
-    register: async (req, res)=>{
-        try {
-            const hashedPassword = await bcrypt.hash(req.body.password, 10);
-            User.create({
-                ...req.body,
-                password: hashedPassword
-            }).then(userData=>{
-                res.status(201).json(userData)
-            })
-        } catch (error) {
-            console.log(error);
-            res.status(500).send(error);
-        }
-    },
+
+const register = async (req, res)=>{
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        User.create({
+            ...req.body,
+            password: hashedPassword
+        }).then(userData=>{
+            res.status(201).json(userData)
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
+
+const getById = async (req, res)=>{
+    try {
+        User.findById(req.params.id)
+        .then(data=>{
+            res.status(201).json(data);
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
 
     // login: async (req, res)=>{
     //     try {
@@ -63,5 +75,7 @@ module.exports = {
     //     })
         
     // }
-
+module.exports = {
+    register,
+    getById
 }
