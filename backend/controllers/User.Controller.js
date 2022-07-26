@@ -30,6 +30,18 @@ const getById = async (req, res)=>{
     }
 }
 
+const getUserProfile = async (req, res)=>{
+    try {
+        User.findById(req.user._id)
+        .then(data=>{
+            res.status(201).json(data);
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
+
 const updateById = async (req, res)=>{
     try {
         User.findByIdAndUpdate(req.params.id, {...req.body})
@@ -46,5 +58,6 @@ const updateById = async (req, res)=>{
 module.exports = {
     register,
     getById,
+    getUserProfile,
     updateById
 }
