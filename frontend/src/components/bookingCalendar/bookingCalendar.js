@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { ScheduleMeeting } from 'react-schedule-meeting';
 import colors from '../../assets/styles/colors';
 import './styles.css';
-
 
 Date.prototype.addDays = function(days) {
     var date = new Date(this.valueOf());
@@ -23,24 +22,27 @@ function getDates(start, end) {
 }
 
 
-const BookingCalendar = () => {
+const BookingCalendar = ({tutor}) => {
 
     // SAVE ARRAY OF DATES BETWEEN TWO DATES
-    const availableTimeslots = getDates('26 Jul 2022', '29 Aug 2022').map((date) => {
-        return {
-          id: date,
-          startTime: new Date(new Date(new Date(date)).setHours(7, 10, 0, 0)),
-          endTime: new Date(new Date(new Date(date)).setHours(17, 0, 0, 0)),
-        };
-      });
-    
+    const availableTimeslots = tutor?.availability?.map(availability=>{
+      return getDates(availability.start_date, availability.end_date).map((date) => {
+           const value = {
+            id: date,
+            startTime: new Date(new Date(new Date(date)).setHours(availability.start_time.split(":")[0], 0, 0, 0)),
+            endTime: new Date(new Date(new Date(date)).setHours(availability.end_time.split(":")[0], 0, 0, 0)),
+          }
+           return value;
+        })
+    })
+      
       return (
         <div>
             <ScheduleMeeting
                 borderRadius={10}
                 primaryColor={colors.primary}
                 eventDurationInMinutes={30}
-                availableTimeslots={availableTimeslots}
+                availableTimeslots={availableTimeslots.flat()}
                 onStartTimeSelect={console.log}
             />
         </div>
