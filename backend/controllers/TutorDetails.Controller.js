@@ -96,6 +96,23 @@ const deleteById = async (req, res)=>{
     }
 }
 
+const addTutorAvailability = async (req, res)=>{
+    try {
+        TutorDetails.findByIdAndUpdate(req.user.tutor_details, {
+            $push:{
+                availability: {...req.body.newAvailability}
+            }
+        })
+        .then(async data=>{
+            res.status(201).json(data);
+        })
+       
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
+
 
 
 module.exports ={
@@ -103,5 +120,6 @@ module.exports ={
     getAll,
     getById,
     updateById,
-    deleteById
+    deleteById,
+    addTutorAvailability
 }
