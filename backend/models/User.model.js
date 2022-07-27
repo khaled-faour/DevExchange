@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     is_tutor : {type: Boolean, default: false, required: false},
     tutor_details: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'tutorDetails',
+        ref: 'TutorDetails',
         required: false
     }
 }, { timestamps: true });
