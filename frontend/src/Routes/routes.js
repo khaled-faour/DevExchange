@@ -29,8 +29,14 @@ const Router = () => {
                             <Route index element={<Tutors />} />
                             <Route path=":id" element={<TutorView />} />
                     </Route>
+
+                    {/* Bundles Path */}
                     <Route path="bundles" element={<BundlesView />} /> 
+
+                    {/* Profile Path */}
                     <Route path="profile" element={<ProfileView />} /> 
+
+                    {/* Return to home if path not found */}
                     <Route path="*" element={<Home />} />
                 </Routes>
             </Container>
