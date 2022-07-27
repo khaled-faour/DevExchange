@@ -110,7 +110,7 @@ const Questions = () => {
                 <Select
                     value={filters.sort}
                     onChange={onSortChange}
-                    
+                    style={{backgroundColor: '#fff'}}
                     >
                         <MenuItem key={0} value={"latest"}>Latest</MenuItem>
                         <MenuItem key={1} value={"most-voted"}>Most voted</MenuItem>
