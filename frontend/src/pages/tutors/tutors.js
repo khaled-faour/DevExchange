@@ -102,7 +102,7 @@ const Tutors = () => {
                 <Select
                     value={filters.sort}
                     onChange={onSortChange}
-                    
+                    style={{backgroundColor: "#fff"}}
                     >
                     <MenuItem key={1} value={"most-voted"}>Most voted</MenuItem>
                     <MenuItem key={1} value={"least-voted"}>Least voted</MenuItem>
