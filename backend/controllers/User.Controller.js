@@ -32,7 +32,7 @@ const getById = async (req, res)=>{
 
 const getUserProfile = async (req, res)=>{
     try {
-        User.findById(req.user._id)
+        User.findById(req.user._id).populate("tutor_details")
         .then(data=>{
             res.status(201).json(data);
         })
