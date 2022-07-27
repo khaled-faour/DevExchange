@@ -47,11 +47,11 @@ const styles = createUseStyles({
             backgroundColor: '#f5f5f5',
         },
         '& h1': {
-            fontSize: fontSizes.h1,
+            fontSize: fontSizes.h2,
             margin: '0 0 0 0',
         },
         '& h2': {
-            fontSize: fontSizes.h2,
+            fontSize: fontSizes.h3,
             fontWeight: 'normal',
             margin: '0 0 0 0',
         },
@@ -63,6 +63,19 @@ const styles = createUseStyles({
         width: '30%',
         color: '#474D59',
         // textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+        '& h1': {
+            fontSize: fontSizes.h1,
+            margin: '0 0 0 0',
+        },
+        '& h2': {
+            fontSize: fontSizes.h2,
+            fontWeight: 'normal',
+            margin: '0 0 0 0',
+        },
+        
+    },
+    button:{
+        paddingTop: '20px',
     },
     title:{
         width: '30%',
@@ -78,6 +91,7 @@ const styles = createUseStyles({
             height: 'auto',
             maxWidth: '400px',
             maxHeight: '400px',
+            paddingBottom: '20px',
         }
     },
     footer:{
