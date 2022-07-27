@@ -12,6 +12,7 @@ const styles = createUseStyles({
         border: '1px solid #cdcdcf',
         borderRadius: "5px",
         boxSizing: "border-box",
+        backgroundColor: "#fff",
     },
     tutorCardContent: {
         display: "flex",
