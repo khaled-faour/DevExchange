@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styles from './styles';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import TabPanel from '../../components/tabPanel/tabPanel';
@@ -9,7 +8,6 @@ import Availability from '../../components/availability/availability';
 // Material-UI
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 
 const Profile = (props) => {
     const [user, setUser] = useState({});
