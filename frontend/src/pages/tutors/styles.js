@@ -17,7 +17,7 @@ const styles = createUseStyles({
         gap: '10px',
         border: '1px solid #cdcdcf',
         borderRadius: '5px',
-        backgroundColor: 'transparent',
+        backgroundColor: '#fff',
         padding: '10px',
         boxSizing: 'border-box',
     },
