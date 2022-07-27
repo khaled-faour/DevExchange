@@ -56,6 +56,7 @@ const Profile = (props) => {
                     <Tab label="Personal Info" {...a11yProps(0)} />
                     <Tab label="Calendar" {...a11yProps(1)} />
                     <Tab label="Transactions" {...a11yProps(2)} />
+                    {auth.user.is_tutor && <Tab label="Availability" {...a11yProps(3)}/>}
                 </Tabs>
             </div>
             <TabPanel value={value} index={0}>
@@ -67,6 +68,11 @@ const Profile = (props) => {
             <TabPanel value={value} index={2}>
                 Transactions
             </TabPanel>
+            {auth.user.is_tutor &&
+                <TabPanel value={value} index={3}>
+                    <Availability user={user} fetchUser={fetchUser}/>
+                </TabPanel>
+            }
         </div>
     )
 }
