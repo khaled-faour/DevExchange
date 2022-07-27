@@ -61,7 +61,9 @@ const Home = () => {
                         <h2>Your Place </h2>
                         <h2>to Exchange</h2>
                         <h2>Your Knowledge</h2>
-                        <Button>JOIN OUR COMMUNITY</Button>
+                        <div className={classes.button}>
+                            <Button>JOIN OUR COMMUNITY</Button>
+                        </div>
                     </div>
                     <div className={classes.image}>
                         <img src={image1}/>
