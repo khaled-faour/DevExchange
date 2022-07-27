@@ -6,7 +6,7 @@ const styles = createUseStyles({
         padding: '20px',
         border: '1px solid',
         borderRadius: '5px',
-        backgroundColor: 'transparent',
+        backgroundColor: '#fff',
         transition: '0.2s ease-in-out',
         boxSizing: 'border-box',
         '&:hover': {
