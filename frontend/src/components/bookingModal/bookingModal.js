@@ -26,14 +26,11 @@ const BookinModal = ({tutor, open, onClose }) => {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        <BookingCalendar tutor={tutor} />
+                        <BookingCalendar tutor={tutor} onClose={onClose}/>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={onClose} outlined rounded>Cancel</Button>
-                    <Button onClick={onClose} rounded>
-                        Book
-                    </Button>
                 </DialogActions>
             </Dialog>
         </div>
