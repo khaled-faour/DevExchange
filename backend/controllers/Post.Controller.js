@@ -1,4 +1,5 @@
 const Post = require('../models/Post.model');
+const User = require('../models/User.model');
 
 const addPost = async (req, res)=>{
     try {
@@ -8,6 +9,12 @@ const addPost = async (req, res)=>{
                 const question = await Post.findById(req.body.question_id);
                 question.answers.push(data.id)
                 question.save()
+            }else{
+                await User.findByIdAndUpdate(req.user._id,{
+                    $inc:{
+                        balance: -50
+                    }
+                })
             }
             res.status(201).json(data);
         })
