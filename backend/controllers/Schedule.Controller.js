@@ -1,4 +1,6 @@
 const Schedule = require('../models/Schedule.model');
+const OnholdCoins = require('../models/OnholdCoins.model');
+const User = require("../models/User.model");
 
 const addSchedule = async (req, res)=>{
     try {
@@ -37,6 +39,17 @@ const getById = async (req, res)=>{
     }
 }
 
+const getUserSchedule = async (req, res)=>{
+    try {
+        Schedule.find({$or:[{user: req.user._id}, {tutor: req.user.tutor_details}]})
+        .then(data=>{
+            res.status(201).json(data);
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
 
 const updateById = async (req, res)=>{
     try {
@@ -54,12 +67,20 @@ const updateById = async (req, res)=>{
 
 const deleteById = async (req, res)=>{
     try {
-        Schedule.findById(req.params.id).then(data=>{
-            if(data.user.valueOf() === req.user._id){
-                Schedule.findByIdAndDelete(req.params.id)
-                .then(async data=>{
-                    res.status(201).json(data);
+
+        Schedule.findById(req.params.id).then(async schedule=>{
+            if(schedule.user.valueOf() == req.user._id || schedule.tutor.valueOd() == req.user._id){
+                
+                await Schedule.findByIdAndDelete(req.params.id)
+                .then(async deletedSchedule=>{
+                    await OnholdCoins.findOneAndDelete({schedule: req.params.id}).then(async holdCoins=>{
+                        await User.findByIdAndUpdate(req.user._id, {$inc: {balance: holdCoins.amount}}).then(async user=>{
+                            res.status(201).json(deletedSchedule);
+                        })
+                    })
                 })
+            }else{
+                res.status(401).send("You are not authorized to delete this schedule");
             }
         })
         
@@ -76,5 +97,6 @@ module.exports ={
     getAll,
     getById,
     updateById,
-    deleteById
+    deleteById,
+    getUserSchedule
 }
