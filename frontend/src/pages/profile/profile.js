@@ -4,6 +4,7 @@ import useAuth from '../../hooks/useAuth';
 import TabPanel from '../../components/tabPanel/tabPanel';
 import PersonalInfo from '../../components/personalInfo/personalInfo';
 import Availability from '../../components/availability/availability';
+import UserCalendar from '../../components/userCalendar/userCalendar';
 
 // Material-UI
 import Tabs from '@mui/material/Tabs';
@@ -61,7 +62,7 @@ const Profile = (props) => {
                 <PersonalInfo user={user}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Calendar
+                <UserCalendar user={user}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
                 Transactions
