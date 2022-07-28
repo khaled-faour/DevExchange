@@ -16,6 +16,7 @@ const styles = createUseStyles({
         borderRadius: '5px',
         boxSizing: 'border-box',
         width: '100%',
+        backgroundColor: '#fff',
     },
     availabilityContainer:{
         display: 'flex',
