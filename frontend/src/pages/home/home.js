@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
+import TopRatedTutors from '../../components/topRatedTutors/topRatedTutors';
+import MostVotedQuestions from '../../components/mostVotedQuestions/mostVotedQuestions';
 
 
 const Home = () => {
@@ -7,8 +9,8 @@ const Home = () => {
     
     return (
         <div>
-            <h1>Home</h1>
-            <button onClick={auth.logout}>logout</button>
+            <TopRatedTutors />
+            <MostVotedQuestions />
         </div>
     );
 }
