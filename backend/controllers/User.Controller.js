@@ -79,17 +79,20 @@ const bookSession = async (req, res)=>{
                     end_time: req.body.time.splitTimeslot[1]?.startTime,
                     user: req.user._id,
                     tutor: req.body.tutor._id,
+                }).then(async scheduleData=>{
+                    await User.findByIdAndUpdate(req.user._id, {
+                        $inc:{
+                            balance: -req.body.tutor.hourly_rate
+                        },
+                        
+                    })
+                    await OnholCoins.create({
+                        user: req.user._id,
+                        amount: req.body.tutor.hourly_rate,
+                        schedule: scheduleData._id,
+                    })
                 })
-                await User.findByIdAndUpdate(req.user._id, {
-                    $inc:{
-                        balance: -req.body.tutor.hourly_rate
-                    },
-                    
-                })
-                await OnholCoins.create({
-                    user: req.user._id,
-                    amount: req.body.tutor.hourly_rate,
-                })
+                
                 res.status(201).json(data);
             });
         }else{
