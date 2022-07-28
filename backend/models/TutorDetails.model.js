@@ -17,10 +17,8 @@ const tutorDetailsSchema = new mongoose.Schema({
         required: false
     }],
     availability:[{
-        start_time: {type: String, required: false},
-        end_time: {type: String, required: false},
-        start_date: {type: Date, required: false},
-        end_date: {type: Date, required: false,},
+        start_time: {type: Date, required: false},
+        end_time: {type: Date, required: false},
         durations:[{type: Number, required: false}]
     }]
 }, { timestamps: true });
