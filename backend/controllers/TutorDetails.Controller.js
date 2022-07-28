@@ -97,10 +97,44 @@ const deleteById = async (req, res)=>{
 }
 
 const addTutorAvailability = async (req, res)=>{
-    try {
+
+    Date.prototype.addDays = function(days) {
+        var date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+    }
+    
+    function getDates(start, end) {
+        console.log(start, end)
+        const startDate = new Date(start)
+        const stopDate = new Date(end)
+        var dateArray = new Array();
+        var currentDate = startDate;
+        while (currentDate <= stopDate) {
+            dateArray.push(new Date (currentDate));
+            currentDate = currentDate.addDays(1);
+        }
+        return dateArray;
+    }
+    try {   
+        const availability = req.body.newAvailability;
+        const start_hours = availability.start_time.split(':')
+        const end_hours = availability.end_time.split(':')
+        console.log("Availability ", availability)
+
+        const availableTimeslots = getDates(availability.start_date, availability.end_date)
+        .map(date=>{
+            const value ={
+                start_time: new Date(new Date(new Date(date)).setHours(start_hours[0], start_hours[1], 0, 0)),
+                end_time: new Date(new Date(new Date(date)).setHours(end_hours[0], end_hours[1], 0, 0)),
+            }
+            console.log("Value: ", value)
+              return value
+            })
+            console.log("Timeslotes: ", availableTimeslots)
         TutorDetails.findByIdAndUpdate(req.user.tutor_details, {
             $push:{
-                availability: {...req.body.newAvailability}
+                availability: availableTimeslots
             }
         })
         .then(async data=>{
