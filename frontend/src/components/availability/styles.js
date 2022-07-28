@@ -23,7 +23,7 @@ const styles = createUseStyles({
         alignItems: 'flex-start',
         gap: '5px',
         '& h3, & h4':{
-            margin: '0',
+            margin: '2px',
             '& span':{
                 fontWeight: 'normal'
             }
