@@ -7,6 +7,7 @@ const styles = createUseStyles({
         border: '1px solid #cdcdcf',
         borderRadius: '5px',
         padding: '20px',
+        backgroundColor: '#fff'
         
     },
     innerContainer:{
