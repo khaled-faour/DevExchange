@@ -74,18 +74,20 @@ const Questions = () => {
         setAddPostOpen(true);
     }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const { data } = await axios.get('/posts/questions');
-                setQuestions(data);
-                setLoading(false);
-                console.log(data);
-            } catch (error) {
-                setError(error);
-                setLoading(false);
-            }
+    const fetchData = async () => {
+        try {
+            const { data } = await axios.get('/posts/questions');
+            setQuestions(data);
+            setLoading(false);
+            console.log(data);
+        } catch (error) {
+            setError(error);
+            setLoading(false);
         }
+    }
+
+    useEffect(() => {
+        
         fetchData();
     }, []);
 
@@ -177,7 +179,7 @@ const Questions = () => {
                     </Grid>
                 </Grid>
             </Grid>
-            <AddQuestion isOpen={addPostOpen} setIsOpen={setAddPostOpen}/>
+            <AddQuestion isOpen={addPostOpen} setIsOpen={setAddPostOpen} fetchData={fetchData}/>
         </div>
     );
 }

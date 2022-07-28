@@ -16,7 +16,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 
-const AddQuestion = ({isOpen, setIsOpen}) => {
+const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
   const classes = styles();
   const [fullScreen, setFullScreen] = useState(false);
   const [question, setQuestion] = useState({title:'', content: '', tags: []});
@@ -58,6 +58,8 @@ const AddQuestion = ({isOpen, setIsOpen}) => {
     axios.post('/posts', question)
     .then(res=>{
       console.log(res)
+      fetchData();
+      setIsOpen(false);
     })
   }
 
