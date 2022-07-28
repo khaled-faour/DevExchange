@@ -17,12 +17,17 @@ const styles = createUseStyles({
         boxSizing: 'border-box',
         width: '100%',
         backgroundColor: '#fff',
+        
     },
     availabilityContainer:{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
+        width: '100%',
         gap: '5px',
+        '& :hover':{
+            cursor: 'pointer',
+        },
         '& h3, & h4':{
             margin: '2px',
             '& span':{
