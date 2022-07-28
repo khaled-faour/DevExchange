@@ -19,6 +19,7 @@ const styles = createUseStyles({
         height: '100%',
         boxSizing: 'border-box',
         padding: "1rem",
+        backgroundColor: '#fff',
     },
     title:{
         fontSize: "1.5rem",
@@ -44,6 +45,7 @@ const styles = createUseStyles({
         height: '100%',
         boxSizing: 'border-box',
         padding: "1rem",
+        backgroundColor: '#fff',
     },
 });
 
