@@ -54,8 +54,7 @@ const Profile = (props) => {
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Personal Info" {...a11yProps(0)} />
                     <Tab label="Calendar" {...a11yProps(1)} />
-                    <Tab label="Transactions" {...a11yProps(2)} />
-                    {auth.user.is_tutor && <Tab label="Availability" {...a11yProps(3)}/>}
+                    {auth.user.is_tutor && <Tab label="Availability" {...a11yProps(2)}/>}
                 </Tabs>
             </div>
             <TabPanel value={value} index={0}>
@@ -64,11 +63,8 @@ const Profile = (props) => {
             <TabPanel value={value} index={1}>
                 <UserCalendar user={user}/>
             </TabPanel>
-            <TabPanel value={value} index={2}>
-                Transactions
-            </TabPanel>
             {auth.user.is_tutor &&
-                <TabPanel value={value} index={3}>
+                <TabPanel value={value} index={2}>
                     <Availability user={user} fetchUser={fetchUser}/>
                 </TabPanel>
             }
