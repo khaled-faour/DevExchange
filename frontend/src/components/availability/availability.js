@@ -49,26 +49,18 @@ const Availability = ({user, fetchUser}) => {
     }
     
 
-    const getTime = (time)=>{
-        // convert single digit to time hh:mm am/pm format
-        const timeArray = time.split(':');
-        const hour = timeArray[0] ?? 0;
-        const minute = timeArray[1] ?? 0;
-        const ampm = hour >= 12 ? 'pm' : 'am';
-        const hour12 = hour % 12;
-        return `${hour12}:${minute} ${ampm}`;
-    }
-
     return (
         <div className={classes.container}>
             <div className={classes.addButton}><Button onClick={handleAvailabilityModal} leftIcon={<AddIcon/>} rounded>Add Availability</Button></div>
                 {availability.map((availability, index) => {
+                    const startTime = new Date(availability.start_time)
+                    const endTime = new Date(availability.end_time)
                     return (
                         <div className={classes.innerContainer} key={index}>
                             <div className={classes.availabilityContainer}>
                                 <div>
-                                    <h3>Days: <span>{availability.start_date.split('T')[0]} - {availability.end_date.split('T')[0]}</span></h3>
-                                    <h4>Time: <span>{getTime(availability.start_time)} {getTime(availability.end_time)}</span></h4>
+                                    <h3>Days: <span>{startTime.toDateString()} — {endTime.toDateString()}</span></h3>
+                                    <h4>Time: <span>{startTime.toLocaleTimeString()} — {endTime.toLocaleTimeString()}</span></h4>
                                     <h4>Durations: <span>{availability?.durations?.join(', ')}</span></h4>
                                 </div>
                             </div>
