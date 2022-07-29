@@ -74,6 +74,9 @@ app.use('/api/users', authMiddleware, usersRoutes);
 const schedulesRoutes = require('./routes/schedules');
 app.use('/api/schedules', authMiddleware, schedulesRoutes);
 
+const tagsRoutes = require('./routes/tags');
+app.use('/api/tags', authMiddleware, tagsRoutes);
+
 app.listen(4001, ()=>{
     console.log(`Server running on port 4001`);
 })
