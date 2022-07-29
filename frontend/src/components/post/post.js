@@ -7,6 +7,7 @@ import Button from '../../components/button/button';
 import useAuth from '../../hooks/useAuth';
 import colors from '../../assets/styles/colors';
 import Editor from '../../components/richTextEditor/richTextEdit';
+import { ToastContainer, toast } from 'react-toastify';
 
 // Material UI
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -52,9 +53,10 @@ const Post = (props)=>{
                     ...post,
                     comments: [...post.comments, res.data]
                 })
+                toast.success('Comment added successfully');
                 // setCommentsList([...commentsList, res.data]);
             }).catch(err=>{
-                console.log(err);
+                toast.error('Error adding comment');
             })
         }
     }
@@ -129,6 +131,7 @@ const Post = (props)=>{
                 </div>
             </div>
             }
+            <ToastContainer hideProgressBar/>
         </div>
     )
 }
