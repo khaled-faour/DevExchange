@@ -64,7 +64,7 @@ const AvailabilityModal = ({ open, onClose, onSubmit, onChange }) => {
                             <Grid item xs={12} md={6}>
                                 <Input type="time" name="end_time" label="End time" onChange={onChange}/>
                             </Grid>
-                            <Grid item xs={12}>
+                            {/* <Grid item xs={12}>
                                 Durations (mins): 
                                 <Grid container direction="column" alignItems='flex-start' spacing={2} wrap='nowrap'>
                                     {durations.map((duration, index) => (
@@ -79,7 +79,7 @@ const AvailabilityModal = ({ open, onClose, onSubmit, onChange }) => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Button onClick={handleAddDuration}>Add duration</Button>
-                            </Grid>
+                            </Grid> */}
                             
                         </Grid>
                     </DialogContentText>
