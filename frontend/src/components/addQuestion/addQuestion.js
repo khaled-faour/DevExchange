@@ -5,6 +5,7 @@ import Editor from '../../components/richTextEditor/richTextEdit';
 import TagSelect from 'react-select'
 import styles from './styles';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 // Material UI
 import TextField from '@mui/material/TextField';
@@ -46,9 +47,11 @@ const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
   const handleSubmit = () =>{
     axios.post('/posts', question)
     .then(res=>{
-      console.log(res)
+      toast.success('Question added successfully');
       fetchData();
       setIsOpen(false);
+    }).catch(err=>{
+      toast.error('Error adding question');
     })
   }
 
@@ -65,6 +68,8 @@ const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
     })
   }, []);
   return (
+    <>
+      <ToastContainer hideProgressBar />
       <Dialog open={isOpen} onClose={handleClose} fullWidth fullScreen = {fullScreen}>
         <DialogTitle>
           <div className={classes.header}>
@@ -84,6 +89,7 @@ const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
           <Button onClick={handleSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>
+    </>
   );
 }
 
