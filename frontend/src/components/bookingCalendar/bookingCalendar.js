@@ -23,7 +23,7 @@ function getDates(start, end) {
   return dateArray;
 }
 
-const BookingCalendar = ({tutor, onClose}) => {
+const BookingCalendar = ({tutor, onClose, toast}) => {
 
       const availableTimeslots = tutor.availability.map(availability=>{
         console.log("Availability:: ", availability)
@@ -41,9 +41,10 @@ const BookingCalendar = ({tutor, onClose}) => {
     const handleConfirmation = (time) => {
         axios.post('/users/book', {time, tutor:{_id: tutor._id, hourly_rate: tutor.hourly_rate}})
         .then(res => {
+            toast.success('Session Booked successfully');
             onClose()            
         }).catch(err => {
-            console.log(err);
+            toast.error('Error booking session');
         });
     }
       
