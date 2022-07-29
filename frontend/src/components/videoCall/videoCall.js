@@ -8,6 +8,7 @@ import MicIcon from '@mui/icons-material/Mic';
 import MicOffIcon from '@mui/icons-material/MicOff';
 import CallEndIcon from '@mui/icons-material/CallEnd';
 import ScreenShareIcon from '@mui/icons-material/ScreenShare';
+import StopScreenShareIcon from '@mui/icons-material/StopScreenShare';
 
 const App = () => {
 	const client = useAgoraClient();
@@ -80,7 +81,7 @@ const App = () => {
 				channel: 'test',  
 				token: '0062539654fa77a48d1b9c97b90aeb01667IAA3Q1huSztqwfcRqF33vS32Bs5x/Z0QWxH3x37acNtvuQx+f9gAAAAAEABUJOp9MY3jYgEAAQAxjeNi',  
 			})}><ScreenShareIcon/></button>  
-			<button onClick={() => stopScreenShare()}>stop screen share</button>  
+			<button onClick={() => stopScreenShare()}><StopScreenShareIcon/></button>  
 		</div>
 		<div id={'test'}></div> 
 		<div>
