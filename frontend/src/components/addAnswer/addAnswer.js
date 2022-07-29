@@ -4,6 +4,7 @@ import Button from '../../components/button/button';
 import {useParams} from 'react-router-dom';
 import styles from './styles';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const AddAnswer = ({fetchPosts}) =>{
@@ -29,6 +30,9 @@ const AddAnswer = ({fetchPosts}) =>{
     axios.post('/posts', answer)
     .then(res=>{
       fetchPosts();
+      toast.success('Answer added successfully');
+    }).catch(err=>{
+      toast.error('Error adding answer');
     })
   }
 
@@ -39,6 +43,7 @@ const AddAnswer = ({fetchPosts}) =>{
 
   return (
     <div className={classes.container}>
+      <ToastContainer hideProgressBar/>
       <Editor value={answer.content} onChange={handleValueChange}/>
       <div className={classes.actions}>
         <Button onClick={clearAnswer} rounded outlined>Clear</Button>
