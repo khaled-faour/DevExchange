@@ -21,19 +21,8 @@ const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
   const [fullScreen, setFullScreen] = useState(false);
   const [question, setQuestion] = useState({title:'', content: '', tags: []});
   const [tags, setTags] = useState([]);
-
-  const tagOptions = [
-    {value: 'React', label: 'React'},
-    {value: 'Javascript', label: 'Javascript'},
-    {value: 'Node.js', label: 'Node.js'},
-    {value: 'Express', label: 'Express'},
-    {value: 'MongoDB', label: 'MongoDB'},
-    {value: 'Mongoose', label: 'Mongoose'},
-    {value: 'GraphQL', label: 'GraphQL'},
-    {value: 'Apollo', label: 'Apollo'},
-    {value: 'React-Native', label: 'React-Native'},
-    {value: 'React-Router', label: 'React-Router'},
-]
+  const [tagOptions, setTagOptions] = useState([]);
+  
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -68,8 +57,13 @@ const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
   }
 
   useEffect(() => {
-    console.log(question);
-  }, [question]);
+    axios.get('/tags').then(res=>{
+      console.log(res.data)
+      setTagOptions(res.data);
+    }).catch(err=>{
+      console.log(err)
+    })
+  }, []);
   return (
       <Dialog open={isOpen} onClose={handleClose} fullWidth fullScreen = {fullScreen}>
         <DialogTitle>

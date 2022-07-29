@@ -15,6 +15,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 const Questions = () => {
     const classes = styles();
     const [questions, setQuestions] = useState([]);
+    const [tagOptions, setTagOptions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [addPostOpen, setAddPostOpen] = useState(false)
@@ -26,18 +27,6 @@ const Questions = () => {
         sort: 'latest',
     })
 
-    const tagOptions = [
-        {value: 'React', label: 'React'},
-        {value: 'Javascript', label: 'Javascript'},
-        {value: 'Node.js', label: 'Node.js'},
-        {value: 'Express', label: 'Express'},
-        {value: 'MongoDB', label: 'MongoDB'},
-        {value: 'Mongoose', label: 'Mongoose'},
-        {value: 'GraphQL', label: 'GraphQL'},
-        {value: 'Apollo', label: 'Apollo'},
-        {value: 'React-Native', label: 'React-Native'},
-        {value: 'React-Router', label: 'React-Router'},
-    ]
     const onFilterChange = (e) => {
         console.log(e.target.name, typeof e.target.value);
         setFilters({
@@ -85,9 +74,16 @@ const Questions = () => {
             setLoading(false);
         }
     }
+    const fetchTags= async () => {
+        await axios.get('/tags').then(res=>{
+            setTagOptions(res.data);
+            console.log(res.data);
+        })
+    }
+
 
     useEffect(() => {
-        
+        fetchTags();
         fetchData();
     }, []);
 
