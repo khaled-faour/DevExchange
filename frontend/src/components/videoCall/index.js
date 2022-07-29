@@ -9,7 +9,7 @@ import AgoraRTC from "agora-rtc-sdk-ng"
 const client = AgoraRTC.createClient({mode: "rtc", codec: "vp8"});  
 
 const Test = () => (  
-  <AgoraProvider client={client} appId={'2539654fa77a48d1b9c97b90aeb01667'}>  
+  <AgoraProvider client={client} appId={process.env.REACT_APP_AGORA_APP_ID}>  
 	 <VideoCall/>  
   </AgoraProvider>  
 );  
