@@ -5,7 +5,7 @@ const isAdmin = require('../middlewares/admin.middleware');
 
 
 router.post("/", commentController.addComment);
-router.put("/:id", isAdmin, commentController.updateById);
+router.put("/:id", commentController.updateById);
 router.delete("/:id", commentController.deleteById);
 router.get("/", commentController.getAll);
 router.get("/:id", commentController.getById);

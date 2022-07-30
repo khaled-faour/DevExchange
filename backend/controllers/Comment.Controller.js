@@ -49,11 +49,15 @@ const getById = async (req, res)=>{
 
 const updateById = async (req, res)=>{
     try {
-        Comment.findByIdAndUpdate(req.params.id, {...req.body})
-        .then(async data=>{
-            const upadatedData = await Post.findById(req.params.id)
-            res.status(201).json(upadatedData);
-        })
+        const comment = await Comment.findById(req.params.id);
+        console.log(comment.user._id);
+        if(comment.user._id.valueOf() == req.user._id){
+            comment.content = req.body.content;
+            await comment.save();
+            res.status(201).send("Comment updated successfully");
+        }else{
+            res.status(403).send("You are not authorized to update this comment");
+        }
     } catch (error) {
         console.log(error);
         res.status(500).send(error);
