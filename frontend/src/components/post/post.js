@@ -125,7 +125,7 @@ const Post = (props)=>{
             </div>
             <div className={classes.userCardContainer}>
                 <div className={classes.details}>
-                    <div>Asked at <span>{new Date(post.createdAt).toLocaleString()}</span></div>
+                    <div>Posted At<span>{new Date(post.createdAt).toLocaleString()}</span></div>
                     <UserCard user={post.user}/>
                 </div>
             </div>
