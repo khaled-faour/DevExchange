@@ -134,11 +134,26 @@ const getAllAnswers = async (req, res)=>{
 
 const updateById = async (req, res)=>{
     try {
-        Post.findByIdAndUpdate(req.params.id, {...req.body})
-        .then(async data=>{
-            const upadatedData = await Post.findById(req.params.id)
-            res.status(201).json(upadatedData);
-        })
+        const post = await Post.findById(req.params.id)
+        if(post.user.valueOf() == req.user._id){
+            console.log(req.body)
+            post.content = req.body.content;
+            await post.save()
+            res.status(200).send("Post updated successfully")
+        }else{
+            console.log("Unauthorized")
+            res.status(401).send("Unauthorized")
+        }
+        // .then(async data=>{
+        //     if(data.user.valueOf() == req.user._id){
+        //         Post.findByIdAndUpdate(req.params.id, req.body)
+        //         .then(async data=>{
+        //             res.status(201).json(data);
+        //         })
+        //     }else{
+        //         res.status(405).send("You are not authorized to update this post")
+        //     }
+        // })
     } catch (error) {
         console.log(error);
         res.status(500).send(error);

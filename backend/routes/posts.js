@@ -5,7 +5,7 @@ const isAdmin = require('../middlewares/admin.middleware');
 
 
 router.post("/", postContorller.addPost);
-router.put("/:id", isAdmin, postContorller.updateById);
+router.put("/:id", postContorller.updateById);
 router.delete("/:id", isAdmin, postContorller.deleteById);
 router.get("/", postContorller.getAll);
 router.get("/questions", postContorller.getAllQuestions);
