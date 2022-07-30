@@ -14,7 +14,7 @@ const UserCalendar  = ({user})=>{
     const navigate = useNavigate();
     
     const navigateToCall = (id)=>{
-        navigate(`/videoCall/${id}`);
+        navigate(`/meeting/${id}`);
     }
     const handleDeleteSchedule = (id)=>{
         axios.delete(`/schedules/${id}`).then(res=>{
@@ -43,7 +43,7 @@ const UserCalendar  = ({user})=>{
                     const endTime = new Date(schedule.end_time)
                     return (
                         <div className={classes.innerContainer} key={index}>
-                            <div className={classes.availabilityContainer} onClick={()=>navigateToCall(schedule._id)}>
+                            <div className={classes.availabilityContainer} onClick={()=>navigateToCall(schedule.meeting_id)}>
                                 <div>
                                     <h3>Days: <span>{startTime.toDateString()}</span></h3>
                                     <h4>Time: <span>{startTime.toLocaleTimeString()} — {endTime.toLocaleTimeString()}</span></h4>
