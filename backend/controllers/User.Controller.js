@@ -3,6 +3,7 @@ const TutorDetails = require("../models/TutorDetails.model");
 const OnholCoins = require('../models/OnholdCoins.model');
 const Schedule = require('../models/Schedule.model');
 const bcrypt = require('bcryptjs');
+const uniqid = require('uniqid');
 
 
 
@@ -86,6 +87,7 @@ const bookSession = async (req, res)=>{
                     end_time: req.body.time.splitTimeslot[1]?.startTime,
                     user: req.user._id,
                     tutor: req.body.tutor._id,
+                    meeting_id: uniqid("devexchange-")
                 }).then(async scheduleData=>{
                     await User.findByIdAndUpdate(req.user._id, {
                         $inc:{
