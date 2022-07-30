@@ -74,7 +74,7 @@ const Tutors = () => {
         })
     }
 
-    useEffect(() => {
+    const fetchTutors = async () => {
         axios.get('/tutorDetails')
         .then(res => {
             console.log(res.data)
@@ -84,11 +84,13 @@ const Tutors = () => {
         .catch(err => {
             console.log(err);
         });
-    }, []);
+    }
 
-    useEffect(()=>{
+    useEffect(() => {
+        fetchTutors()
         fetchTags()
     }, []);
+
 
     return (
         isLoading ? <div>Loading...</div> : 
@@ -138,7 +140,7 @@ const Tutors = () => {
                     .filter(question=>filters.tags.length > 0 ? question.tags.some(tag=>filters.tags.includes(tag)):true)
                     .sort((a,b)=>sortTutors(a,b))
                     .map(tutor => {
-                        return <TutorCard key={tutor.id} tutor={tutor} showProfiles={false}/>
+                        return <TutorCard key={tutor.id} tutor={tutor} showProfiles={false} fetchTutors={fetchTutors}/>
                     })}
                 </div>
             </Grid>

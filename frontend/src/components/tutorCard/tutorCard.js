@@ -13,7 +13,7 @@ import StarIcon from '@mui/icons-material/Star';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import PaymentsOutlinedIcon from '@mui/icons-material/PaymentsOutlined';
 
-const TutorCard = ({ tutor, showDescription = true, showProfiles = true, showViewButton = true }) => {
+const TutorCard = ({ tutor, showDescription = true, showProfiles = true, showViewButton = true, fetchTutors}) => {
     const classes = styles();
     const auth = useAuth();
     const navigate = useNavigate();
@@ -60,7 +60,7 @@ const TutorCard = ({ tutor, showDescription = true, showProfiles = true, showVie
                 {showViewButton && <Button rounded outlined onClick={handleNavigation}>View</Button>}
                 <Button onClick={handleBook} rounded>Book</Button>
             </div>
-            <BookingModal tutor={tutor} open={showBookingModal} onClose={handleCloseBookinModal}/>
+            <BookingModal tutor={tutor} open={showBookingModal} onClose={handleCloseBookinModal} fetchTutors={fetchTutors}/>
         </div>
     );
 }

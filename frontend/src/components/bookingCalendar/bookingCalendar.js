@@ -24,17 +24,16 @@ function getDates(start, end) {
   return dateArray;
 }
 
-const BookingCalendar = ({tutor, onClose, toast}) => {
+const BookingCalendar = ({tutor, onClose, toast, fetchTutors}) => {
       const auth = useAuth()
       const availableTimeslots = tutor.availability.map(availability=>{
-        console.log("Availability:: ", availability)
         return getDates(availability.start_time, availability.end_time).map(date=>{
           const start_hour = (new Date(availability.start_time)).toTimeString().split(':')
           const end_hour = (new Date(availability.end_time)).toTimeString().split(':')
           return {
             id: availability._id,
-            startTime: new Date(new Date(new Date(date)).setHours(start_hour[0], 0, 0, 0)),
-            endTime: new Date(new Date(new Date(date)).setHours(end_hour[0], 0, 0, 0)),
+            startTime: new Date(new Date(new Date(date)).setHours(start_hour[0], start_hour[1], 0, 0)),
+            endTime: new Date(new Date(new Date(date)).setHours(end_hour[0], end_hour[1], 0, 0)),
           }
         })
       })
@@ -42,9 +41,11 @@ const BookingCalendar = ({tutor, onClose, toast}) => {
     const handleConfirmation = (time) => {
         axios.post('/users/book', {time, tutor:{_id: tutor._id, hourly_rate: tutor.hourly_rate}})
         .then(res => {
-            toast.success('Session Booked successfully');
-            auth.verify()
-            onClose()            
+          // fetchTutors()
+          toast.success('Session Booked successfully');
+          auth.verify()
+          fetchTutors()
+          onClose()            
         }).catch(err => {
             toast.error(err.response.data);
         });

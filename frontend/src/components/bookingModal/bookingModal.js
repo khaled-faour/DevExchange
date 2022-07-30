@@ -10,7 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const BookinModal = ({tutor, open, onClose }) => {
+const BookinModal = ({tutor, open, onClose, fetchTutors }) => {
 
     return (
         <div>
@@ -28,7 +28,7 @@ const BookinModal = ({tutor, open, onClose }) => {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        <BookingCalendar tutor={tutor} onClose={onClose} toast={toast}/>
+                        <BookingCalendar tutor={tutor} onClose={onClose} toast={toast} fetchTutors={fetchTutors}/>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
