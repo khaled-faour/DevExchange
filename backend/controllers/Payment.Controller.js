@@ -11,7 +11,13 @@ const addPayment = async (req, res)=>{
                     }
                 }).then(async data=>{
                     const user = await User.findById(req.user._id);
-                    res.status(201);
+                    req.logIn(user, (err)=>{
+                        if(err){
+                            console.log(err);
+                            res.status(500).send(err);
+                        }
+                        res.end();
+                    });
                 })
             })
            

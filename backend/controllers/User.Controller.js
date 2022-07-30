@@ -50,7 +50,14 @@ const updateById = async (req, res)=>{
         User.findByIdAndUpdate(req.params.id, {...req.body})
         .then(async data=>{
             const upadatedData = await User.findById(req.params.id)
-            res.status(201).json(upadatedData);
+            req.logIn(upadatedData, (err)=>{
+                if(err){
+                    console.log(err);
+                    res.status(500).send(err);
+                }
+                res.status(201)
+                res.end()
+            });
         })
     } catch (error) {
         console.log(error);
@@ -91,12 +98,19 @@ const bookSession = async (req, res)=>{
                         amount: req.body.tutor.hourly_rate,
                         schedule: scheduleData._id,
                     })
+                    const updatedUser = await User.findById(req.user._id)
+                    req.logIn(updatedUser, (err)=>{
+                        if(err){
+                            console.log(err);
+                            res.status(500).send(err);
+                        }
+                        res.status(201)
+                        res.end()
+                    });
                 })
-                
-                res.status(201).json(data);
             });
         }else{
-            res.status(400).send("You don't have enough balance");
+            res.status(405).send("Not enough balance");
         }
     } catch (error) {
         console.log(error);

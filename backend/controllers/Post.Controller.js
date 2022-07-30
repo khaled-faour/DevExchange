@@ -3,22 +3,33 @@ const User = require('../models/User.model');
 
 const addPost = async (req, res)=>{
     try {
-        Post.create({...req.body, user: req.user._id})
-        .then(async data=>{
-            if(req.body.question_id){
-                const question = await Post.findById(req.body.question_id);
-                question.answers.push(data.id)
-                question.save()
-            }else{
-                await User.findByIdAndUpdate(req.user._id,{
-                    $inc:{
-                        balance: -50
+        if(req.user.balance >= 50){
+            Post.create({...req.body, user: req.user._id})
+            .then(async data=>{
+                if(req.body.question_id){
+                    const question = await Post.findById(req.body.question_id);
+                    question.answers.push(data.id)
+                    question.save()
+                }else{
+                    await User.findByIdAndUpdate(req.user._id,{
+                        $inc:{
+                            balance: -50
+                        }
+                    })
+                }
+                const updatedUser = await User.findById(req.user._id)
+                req.logIn(updatedUser, (err)=>{
+                    if(err){
+                        console.log(err);
+                        res.status(500).send(err);
                     }
-                })
-            }
-            res.status(201).json(data);
-        })
-       
+                    res.status(201)
+                    res.end()
+                });
+            })
+        }else{
+            res.status(405).send("Not enough balance")
+        }
     } catch (error) {
         console.log(error);
         res.status(500).send(error);
