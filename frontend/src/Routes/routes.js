@@ -8,7 +8,7 @@ import Tutors from "../pages/tutors/tutors";
 import TutorView from "../pages/tutorView/tutorView";
 import BundlesView from "../pages/bundlesView/bundlesView";
 import ProfileView from "../pages/profile/profile";
-import VideoCall from "../components/videoCall/";
+import Meeting from '../components/meeting';
 
 const Router = () => {
     return(
@@ -38,9 +38,7 @@ const Router = () => {
                     <Route path="profile" element={<ProfileView />} /> 
 
                     {/* Video Call Testing Route */}
-                    <Route path="videoCall" >
-                        <Route path=":id" element={<VideoCall />} />
-                    </Route>
+                    <Route path="meeting/:id" element={<Meeting />} />
 
                     {/* Return to home if path not found */}
                     <Route path="*" element={<Home />} />
