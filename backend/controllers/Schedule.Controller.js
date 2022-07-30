@@ -69,7 +69,7 @@ const deleteById = async (req, res)=>{
     try {
 
         Schedule.findById(req.params.id).then(async schedule=>{
-            if(schedule.user.valueOf() == req.user._id || schedule.tutor.valueOd() == req.user._id){
+            if(schedule?.user?.valueOf() == req.user._id || schedule?.tutor?.valueOf() == req.user._id){
                 
                 await Schedule.findByIdAndDelete(req.params.id)
                 .then(async deletedSchedule=>{
