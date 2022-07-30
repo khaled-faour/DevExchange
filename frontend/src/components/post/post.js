@@ -8,18 +8,19 @@ import useAuth from '../../hooks/useAuth';
 import colors from '../../assets/styles/colors';
 import Editor from '../../components/richTextEditor/richTextEdit';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 
 // Material UI
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import axios from 'axios';
-
+import EditIcon from '@mui/icons-material/Edit';
 
 const Post = (props)=>{
     const auth = useAuth();
     const classes = styles();
-    
-    const [post, setPost] = useState(props.post)
+    const [post, setPost] = useState(props.post);
+    const [postContent, setPostContent] = useState(props.post.content);
+    const [readOnlyPost, setReadOnlyPost] = useState(true);
     const [commentBox, setCommentBox] = useState(false);
     const [comment, setComment] = useState('');
     const [commentsLimit, setCommentsLimit] = useState(3);
@@ -66,6 +67,26 @@ const Post = (props)=>{
         setCommentsLimit(newLimit);
     }
 
+    const handleEditPost = (e)=>{
+        setReadOnlyPost(!readOnlyPost);
+    }
+
+    const handleEditChange = (e)=>{
+        setPostContent(e);
+    }
+
+    const handleEditSubmit = (e)=>{
+        e.preventDefault();
+        axios.put(`/posts/${post._id}`, {content: postContent})
+        .then(res=>{
+            toast.success('Post updated successfully');
+            handleEditPost()
+            fetchPost();
+        }).catch(err=>{
+            toast.error(err.response.data);
+        })
+    }
+
     const fetchPost = ()=>{
         axios.get(`/posts/${post._id}`).then(res=>{
             setPost(res.data);
@@ -89,9 +110,17 @@ const Post = (props)=>{
                     </div>
                 </div>
                 <div className={classes.content}>
-                    <h3 className={classes.title}>{post.title ?? " "}</h3>
-                    {/* <div dangerouslySetInnerHTML={createMarkup(post.content)}></div> */}
-                    <Editor value={post.content} readOnly />
+                    <div className={classes.header}>
+                        <h3 className={classes.title}>{post.title ?? " "}</h3>
+                        {post.user._id === auth.user._id && readOnlyPost && <EditIcon onClick = {handleEditPost}/>}
+                    </div>
+                    <div className={classes.editor}>
+                        <Editor value={post.content} readOnly={readOnlyPost} onChange={handleEditChange}/>
+                        {!readOnlyPost && <div className={classes.editButtons}>
+                            <Button rounded outlined onClick={handleEditPost}>Cancel</Button>
+                            <Button rounded onClick={handleEditSubmit}>Save</Button>
+                        </div>}
+                    </div>
                 </div>
             </div>
             <div className={classes.userCardContainer}>

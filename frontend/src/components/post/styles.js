@@ -17,9 +17,29 @@ const styles = createUseStyles({
     content:{
         width: '100%',
     },
+    header:{
+        display: 'flex',
+        justifyContent: 'space-between',
+        '& svg':{
+            color: '#9e9e9e',
+            cursor: 'pointer',
+            '&:hover':{
+                color: 'black'
+            }
+        }
+    },
     title:{
         margin: 0,
         height: '25px',
+    },
+    editor:{
+        padding: '10px 0',
+    },
+    editButtons:{
+        display: 'flex',
+        justifyContent: 'flex-end',
+        gap: '5px',
+        padding: '10px 0',
     },
     voting:{
         display: 'flex',

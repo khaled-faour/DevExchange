@@ -45,8 +45,8 @@ const QuestionView = (props) => {
                 <Post key={answer.id} post={answer} />
             ))}
 
-            <AddAnswer fetchPosts={fetchPosts}/>
-            {/* {addAnswerOpen && <AddAnswer fetchPosts={fetchPosts}/>} */}
+            {/* <AddAnswer fetchPosts={fetchPosts}/> */}
+            {addAnswerOpen && <AddAnswer fetchPosts={fetchPosts}/>}
         </div>
     );
 }
