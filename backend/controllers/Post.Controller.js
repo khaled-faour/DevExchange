@@ -110,7 +110,7 @@ const getById = async (req, res)=>{
 
 const getAllQuestions = async (req, res)=>{
     try {
-        Post.find({question_id: {$eq: null}}).populate("user", "profile_picture")
+        Post.find({question_id: {$eq: null}}).populate("user", "profile_picture first_name last_name")
         .then(data=>{
             res.status(201).json(data);
         })
