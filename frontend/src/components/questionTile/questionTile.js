@@ -24,6 +24,10 @@ const QuestionTile = ({
     const handleNavigation = ()=>{
         navigate(`/questions/${id}`);
     }
+
+    useEffect(()=>{
+        console.log("USERR: ", user)
+    }, [id]);
     return (
         <div className={classes.container} style={{borderColor: borderColor}} onClick={handleNavigation}>
             <div className={classes.avatar}>
@@ -40,7 +44,7 @@ const QuestionTile = ({
                 </div>
 
                 <div className={classes.footer}>
-                    <span>Asked on {createdAt} — <strong>{createdBy}</strong></span>
+                    <span>Asked on {new Date(createdAt).toLocaleString()} — <strong>{user.first_name} {user.last_name}</strong></span>
                 </div>
             </div>
         </div>
