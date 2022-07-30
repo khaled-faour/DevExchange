@@ -133,7 +133,7 @@ const Post = (props)=>{
             {post.comments.filter((item, idx) => idx < commentsLimit).map((comment, index)=>{
                 return(
                     <div key={index} className={classes.comments}>
-                        <Comment comment={comment}/>
+                        <Comment comment={comment} fetchPost={fetchPost}/>
                     </div>
                 )
             })}
