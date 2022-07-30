@@ -3,6 +3,7 @@ import { ScheduleMeeting } from 'react-schedule-meeting';
 import colors from '../../assets/styles/colors';
 import './styles.css';
 import axios from 'axios';
+import useAuth from '../../hooks/useAuth';
 
 
 Date.prototype.addDays = function(days) {
@@ -24,7 +25,7 @@ function getDates(start, end) {
 }
 
 const BookingCalendar = ({tutor, onClose, toast}) => {
-
+      const auth = useAuth()
       const availableTimeslots = tutor.availability.map(availability=>{
         console.log("Availability:: ", availability)
         return getDates(availability.start_time, availability.end_time).map(date=>{
@@ -42,9 +43,10 @@ const BookingCalendar = ({tutor, onClose, toast}) => {
         axios.post('/users/book', {time, tutor:{_id: tutor._id, hourly_rate: tutor.hourly_rate}})
         .then(res => {
             toast.success('Session Booked successfully');
+            auth.verify()
             onClose()            
         }).catch(err => {
-            toast.error('Error booking session');
+            toast.error(err.response.data);
         });
     }
       

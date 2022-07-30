@@ -6,6 +6,7 @@ import ConfirmPurchase from '../../components/confirmPurchase/confirmPurchase';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import styles from './styles';
+import useAuth from '../../hooks/useAuth';
 
 // Material UI
 import Stepper from '@mui/material/Stepper';
@@ -17,6 +18,7 @@ const steps = ['Select your bundles', 'Insert billing info', 'Confirm your order
 
 const BundlesView = () => {
     const classes = styles()
+    const auth = useAuth()
     const [bundles, setBundles] = useState([]);
     const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
@@ -86,7 +88,7 @@ const BundlesView = () => {
 
   const ConfirmOrder = () => {
     axios.post('/payments', {bundle: selectedBundle}).then(res=>{
-      console.log(res.data)
+      auth.verify()
     })
   }
 

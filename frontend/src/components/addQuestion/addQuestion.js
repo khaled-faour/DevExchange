@@ -6,6 +6,7 @@ import TagSelect from 'react-select'
 import styles from './styles';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import useAuth from '../../hooks/useAuth';
 
 // Material UI
 import TextField from '@mui/material/TextField';
@@ -19,6 +20,7 @@ import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 
 const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
   const classes = styles();
+  const auth = useAuth();
   const [fullScreen, setFullScreen] = useState(false);
   const [question, setQuestion] = useState({title:'', content: '', tags: []});
   const [tags, setTags] = useState([]);
@@ -48,10 +50,13 @@ const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
     axios.post('/posts', question)
     .then(res=>{
       toast.success('Question added successfully');
+      auth.verify()
       fetchData();
       setIsOpen(false);
     }).catch(err=>{
-      toast.error('Error adding question');
+
+      console.log(err)
+      toast.error(err.response.data);
     })
   }
 

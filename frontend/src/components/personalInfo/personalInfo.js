@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from './styles';
 import Input from '../input/input';
 import Button from '../button/button';
+import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 
 
@@ -12,6 +13,7 @@ import Alert from '@mui/material/Alert';
 
 const PersonalInfo = ({user}) => {
     const classes = styles();
+    const auth = useAuth();
     const imageRef = useRef(null);
     const [userInfo, setUserInfo] = useState({
         first_name: '',
@@ -77,7 +79,8 @@ const PersonalInfo = ({user}) => {
                 message: "Profile updated successfully",
                 type: "success"
             })
-            setUserInfo(res.data);
+            auth.verify()
+            // setUserInfo(res.data);
         }
         ).catch(err => {
             console.log(err);
