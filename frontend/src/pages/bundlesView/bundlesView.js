@@ -152,7 +152,7 @@ const BundlesView = () => {
             </Button>
             <div sx={{ flex: '1 1 auto' }} />
 
-            <Button onClick={handleNext} rounded>
+            <Button onClick={handleNext} disabled={nextDisabled} rounded>
               {activeStep === steps.length - 1 ? 'Confirm' : 'Next'}
             </Button>
           </div>
