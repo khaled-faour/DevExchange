@@ -4,6 +4,7 @@ const OnholCoins = require('../models/OnholdCoins.model');
 const Schedule = require('../models/Schedule.model');
 const bcrypt = require('bcryptjs');
 const uniqid = require('uniqid');
+const { mail } = require("./Emails.Controller");
 
 
 
@@ -82,7 +83,7 @@ const bookSession = async (req, res)=>{
                         ]
                     }
                 })
-                await Schedule.create({
+                const schedule = await Schedule.create({
                     start_time: req.body.time.startTime,
                     end_time: req.body.time.splitTimeslot[1]?.startTime,
                     user: req.user._id,
@@ -109,6 +110,20 @@ const bookSession = async (req, res)=>{
                         res.status(201)
                         res.end()
                     });
+
+                    await mail({
+                        to: [req.user.email, req.body.tutor.email].join(","),
+                        subject: "DevExchange - Booking Confirmation",
+                        html: `
+                        <h2>Booking Confirmation</h2>
+                        <p>Hi ${req.user.first_name},</p>
+                        <p>You have successfully booked a session with ${req.body.tutor.user.first_name}.</p>
+                        <p>Please visit your <a href="${process.env.REDIRECT_URI+'/profile'}">profile</a> to view your booking.</p>
+                        <p>You can access the meeting via the link:</p>
+                        <p><a href="${process.env.REDIRECT_URI}/meeting/${scheduleData.meeting_id}">${process.env.REDIRECT_URI}/meeting/${scheduleData.meeting_id}</a></p>
+                        <p>Thank you for using DevExchange.</p>
+                        `
+                    })
                 })
             });
         }else{
