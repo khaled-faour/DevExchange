@@ -39,7 +39,7 @@ const BookingCalendar = ({tutor, onClose, toast, fetchTutors}) => {
       })
       
     const handleConfirmation = (time) => {
-        axios.post('/users/book', {time, tutor:{_id: tutor._id, hourly_rate: tutor.hourly_rate}})
+        axios.post('/users/book', {time, tutor})
         .then(res => {
           // fetchTutors()
           toast.success('Session Booked successfully');
