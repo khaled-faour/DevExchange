@@ -29,7 +29,15 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Landing  | Home |
 | -----------------| -----|
-| ![Landing](./readme/landing-page.png) | ![Home](./readme/home-page.png) |
+| ![Landing](./readme/figma-landing-page.png) | ![Home](./readme/home-page.png) |
+
+| Questions Page | Post View |
+| -----------------| -----|
+| ![Questions](./readme/figma-questions-page.png) | ![Post](./readme/figma-post-page.png) |
+
+| Tutors Page | Post |
+| -----------------| -----|
+| ![Questions](./readme/figma-tutors-page.png) | ![Post](./readme/figma-tutor-profile-page.png) |
 
 | Booking  | Meeting  |
 | -----------------| -----|
