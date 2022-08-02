@@ -3,13 +3,13 @@
 <div align="center">
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
-**[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#-wireframes) • [TECH STACK](#-tech-stack) • [IMPLEMENTATION](#-impplementation) • [HOW TO RUN?](#-how-to-run)**
+**[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech-stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how-to-run)**
 
 </div>
 
 <br><br>
 
-<img src="./readme/title2.svg"/>
+<img id="project-philosophy" src="./readme/title2.svg"/>
 
 > The DevExchange app is a place where professional can exchange their to knowledge for money. 
 > 
@@ -22,7 +22,7 @@
 
 <br><br>
 
-<img src="./readme/title3.svg"/>
+<img id="wireframes" src="./readme/title3.svg"/>
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
@@ -33,12 +33,12 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Booking  | Meeting  |
 | -----------------| -----|
-| ![Booking](./readme/booking-modal.png) | ![Meeting](./readme.meeting.png) |
+| ![Booking](./readme/booking-modal.png) | ![Meeting](./readme/meeting.png) |
 
 
 <br><br>
 
-<img src="./readme/title4.svg"/>
+<img id="tech-stack" src="./readme/title4.svg"/>
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
@@ -50,17 +50,17 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 
 <br><br>
-<img src="./readme/title5.svg"/>
+<img id="implementation" src="./readme/title5.svg"/>
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
 | Landing  | Tutros |
 | -----------------| -----|
-| ![Landing](./readme/real-landing-page.png) | ![Tutros](./readme/tutors-page.png) |
+| ![Landing](./readme/real-landing-page.png) | ![Tutros](./readme/real-tutors-page.png) |
 
 
 <br><br>
-<img src="./readme/title6.svg"/>
+<img id="how-to-run" src="./readme/title6.svg"/>
 
 
 > Below are the instruction to setup and run both the frontend and the backend.
