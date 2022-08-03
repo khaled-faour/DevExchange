@@ -59,9 +59,42 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing  | questions |
+| Landing|
+| -----------------|
+| ![Landing](./readme/landing-login.gif) |
+
+| Questions | Post |
 | -----------------| -----|
-| ![Landing](./readme/landing-page.png) | ![Tutros](./readme/tutors-page.png) |
+| ![Questions](./readme/questions-page.gif) | ![Post](./readme/question-view.gif) |
+
+| Tutors | Tutor Availability |
+| -----------------| -----|
+| ![Questions](./readme/tutors-page.gif) | ![Tutor Availability](./readme/tutor-availability.gif) |
+
+| Booking |
+| -----------------|
+| ![Booking](./readme/tutor-book.gif) |
+
+| Calendar |
+| -----------------|
+| ![Booking](./readme/calendar-view.gif) |
+
+| Meeting |
+| -----------------|
+| ![Meeting](./readme/meeting-audio-video.gif) |
+
+| Realtime Chatting |
+| -----------------|
+| ![Realtime Chatting ](./readme/meeting-realtime-chatting.gif) |
+
+| Screen Sharing |
+| -----------------|
+| ![Screen Sharing](./readme/meeting-screen-sharing.gif) |
+
+| Interactive Whiteboard |
+| -----------------|
+| ![Interactive Whiteboard](./readme/meeting-whiteboard.gif) |
+
 
 
 <br><br>
