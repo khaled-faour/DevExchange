@@ -15,6 +15,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 const Questions = () => {
     const classes = styles();
     const [questions, setQuestions] = useState([]);
+    const [filteredQuestions, setFilteredQuestions] = useState([]);
     const [tagOptions, setTagOptions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -67,6 +68,7 @@ const Questions = () => {
         try {
             const { data } = await axios.get('/posts/questions');
             setQuestions(data);
+            setFilteredQuestions(data);
             setLoading(false);
             console.log(data);
         } catch (error) {
@@ -88,7 +90,20 @@ const Questions = () => {
     }, []);
 
     useEffect(()=>{
-        console.log(filters);
+        setFilteredQuestions (
+            questions.filter(question=>question.title.toLowerCase().includes(filters.search.toLowerCase()))
+            .filter(question=>filters.tags.length > 0 ? question.tags.some(tag=>filters.tags.includes(tag)):true)
+            .filter(question=>(filters.isAnswered === null ? true : question.answers.length > 0 === !!filters.isAnswered))
+            .sort((a,b)=>{
+                if (filters.sort === 'latest') {
+                    return a.createdAt > b.createdAt ? -1 : 1;
+                } else if (filters.sort === 'most-voted') {
+                    return a.up_votes.length > b.up_votes.length ? -1 : 1;
+                } else if (filters.sort === 'least-voted') {
+                    return a.down_votes?.length > b.down_votes?.length ? -1 : 1;
+                }
+            })
+        )
     },[filters])
 
     if (loading) {
@@ -154,24 +169,14 @@ const Questions = () => {
                 {/* Questions List */}
                 <Grid item xs={12} md={9}>
                     <Grid container className={classes.questions}>
-                        {questions
-                        .filter(question=>question.title.toLowerCase().includes(filters.search.toLowerCase()))
-                        .filter(question=>filters.tags.length > 0 ? question.tags.some(tag=>filters.tags.includes(tag)):true)
-                        .filter(question=>(filters.isAnswered === null ? true : question.answers.length > 0 === !!filters.isAnswered))
-                        .sort((a,b)=>{
-                            if (filters.sort === 'latest') {
-                                return a.createdAt > b.createdAt ? -1 : 1;
-                            } else if (filters.sort === 'most-voted') {
-                                return a.up_votes.length > b.up_votes.length ? -1 : 1;
-                            } else if (filters.sort === 'least-voted') {
-                                return a.down_votes?.length > b.down_votes?.length ? -1 : 1;
-                            }
-                        })
+                        {filteredQuestions.length > 0 ?
+                         filteredQuestions
                         .map(question => (
                             <Grid item xs={12} key={question._id}>
                                 <QuestionTile key={question._id} {...question} id={question._id} />
                             </Grid>
-                        ))}
+                        )):
+                        <div className={classes.noQuestions}> No questions found </div>}
                     </Grid>
                 </Grid>
             </Grid>

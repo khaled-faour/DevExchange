@@ -15,6 +15,7 @@ const Tutors = () => {
     const classes = styles();
     const [isLoading, setIsLoading] = useState(true);
     const [tutors, setTutors] = useState([]);
+    const [filteredTutors, setFilteredTutors] = useState([]);
     const [tagOptions, setTagOptions] = useState([]);
     const [filters, setFilters] = useState({
         tags: [],
@@ -79,6 +80,7 @@ const Tutors = () => {
         .then(res => {
             console.log(res.data)
             setTutors(res.data);
+            setFilteredTutors(res.data);
             setIsLoading(false);
         })
         .catch(err => {
@@ -90,6 +92,19 @@ const Tutors = () => {
         fetchTutors()
         fetchTags()
     }, []);
+
+    useEffect(() => {
+        setFilteredTutors(tutors
+            .filter(tutor => (
+                tutor.user.first_name.toLowerCase().includes(filters.search.toLowerCase()) ||
+                tutor.user.last_name.toLowerCase().includes(filters.search.toLowerCase()) ||
+                tutor.title.toLowerCase().includes(filters.search.toLowerCase()) ||
+                tutor.description.toLowerCase().includes(filters.search.toLowerCase())
+            ))
+            .filter(question=>filters.tags.length > 0 ? question.tags.some(tag=>filters.tags.includes(tag)):true)
+            .sort((a,b)=>sortTutors(a,b))
+        )
+    }, [filters]);
 
 
     return (
@@ -130,18 +145,13 @@ const Tutors = () => {
             {/* Tutors List */}
             <Grid item xs={12} md={9} className={classes.container}>
                 <div className={classes.container}>
-                    {tutors
-                    .filter(tutor => (
-                        tutor.user.first_name.toLowerCase().includes(filters.search.toLowerCase()) ||
-                        tutor.user.last_name.toLowerCase().includes(filters.search.toLowerCase()) ||
-                        tutor.title.toLowerCase().includes(filters.search.toLowerCase()) ||
-                        tutor.description.toLowerCase().includes(filters.search.toLowerCase())
-                    ))
-                    .filter(question=>filters.tags.length > 0 ? question.tags.some(tag=>filters.tags.includes(tag)):true)
-                    .sort((a,b)=>sortTutors(a,b))
+                    {filteredTutors.length > 0 ?
+                    filteredTutors
                     .map(tutor => {
                         return <TutorCard key={tutor.id} tutor={tutor} showProfiles={false} fetchTutors={fetchTutors}/>
-                    })}
+                    }) : 
+                    <div className={classes.noTutors}>No tutors found</div>
+                    }
                 </div>
             </Grid>
         </Grid>

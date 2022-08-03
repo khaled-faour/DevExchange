@@ -52,7 +52,9 @@ const Availability = ({user, fetchUser}) => {
     return (
         <div className={classes.container}>
             <div className={classes.addButton}><Button onClick={handleAvailabilityModal} leftIcon={<AddIcon/>} rounded>Add Availability</Button></div>
-                {availability.map((availability, index) => {
+                {
+                availability.length > 0 ?
+                availability.map((availability, index) => {
                     const startTime = new Date(availability.start_time)
                     const endTime = new Date(availability.end_time)
                     return (
@@ -69,7 +71,9 @@ const Availability = ({user, fetchUser}) => {
                             </div>
                         </div>
                     )
-                })}
+                }):
+                    <div style={{alignSelf: 'flex-start'}}>No availability times set</div>
+                }
             <AvailabilityModal open={availabilityModalOpen} onClose={handleAvailabilityModal} onSubmit={handleNewAvailabilitySubmit} onChange={handleNewAvailabilityChange}/>
         </div>
     )

@@ -37,8 +37,10 @@ const UserCalendar  = ({user})=>{
     }, [])
 
     return (
-        <div className={classes.container}>
-                {schedule.map((schedule, index) => {
+        <div >
+                {
+                schedule.length > 0 ?
+                schedule.map((schedule, index) => {
                     const startTime = new Date(schedule.start_time)
                     const endTime = new Date(schedule.end_time)
                     return (
@@ -54,7 +56,9 @@ const UserCalendar  = ({user})=>{
                             </div>
                         </div>
                     )
-                })}
+                }): 
+                        <div>No Scheduled meetings</div>
+                }
         </div>
     )
 }
