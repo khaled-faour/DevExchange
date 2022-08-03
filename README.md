@@ -61,6 +61,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 
 <div align="center">
+
 | Landing|
 | -----------------|
 | ![Landing](./readme/landing-login.gif) |
