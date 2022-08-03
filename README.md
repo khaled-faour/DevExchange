@@ -35,13 +35,10 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 | -----------------| -----|
 | ![Questions](./readme/figma-questions-page.png) | ![Post](./readme/figma-post-page.png) |
 
-| Tutors Page | Post |
+| Tutors Page | Tutor Profile |
 | -----------------| -----|
 | ![Questions](./readme/figma-tutors-page.png) | ![Post](./readme/figma-tutor-profile-page.png) |
 
-| Booking  | Meeting  |
-| -----------------| -----|
-| ![Booking](./readme/booking-modal.png) | ![Meeting](./readme/meeting.png) |
 
 
 <br><br>
