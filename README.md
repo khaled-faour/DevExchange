@@ -11,7 +11,7 @@
 
 <img id="project-philosophy" src="./readme/title2.svg"/>
 
-> The DevExchange app is a place where professional can exchange their to knowledge for money. 
+> The DevExchange app is a place where professionals can exchange their knowledge for money. 
 > 
 > Professionals (Tutors) can make money by getting up-votes on their answers or giving tutoring sessions based on their own hourly price. 
 
@@ -62,9 +62,9 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing  | Tutros |
+| Landing  | questions |
 | -----------------| -----|
-| ![Landing](./readme/real-landing-page.png) | ![Tutros](./readme/real-tutors-page.png) |
+| ![Landing](./readme/landing-page.png) | ![Tutros](./readme/tutors-page.png) |
 
 
 <br><br>
@@ -96,14 +96,14 @@ First thing, you need to have the latest npm version:
 3. Rename `.env.example` to `.env` then set your [VideoSDK](https://www.videosdk.live/) REACT_APP_VIDEOSDK_API_KEY
 
 4. Inside the backend folder, run:
-  ```sh
-  npm install
- ```
+   ```sh
+   npm install
+   ```
 5. Rename `.env.example` to `.env` then set your `CLIENT_ID` and `SECRET_ID` for Google and Github Authentication.
 Set your `MONGO_URI` to your MongoDB connection URI.
 Set your `SMTP_HOST` `SMTP_PORT` `SMTP_USER` and `SMTP_PASSWORD`
 
 6. You are ready to go, inside the backend folder and the frontend folder, run: 
-```sh
-  npm start
- ```
+   ```sh
+   npm start
+   ```
