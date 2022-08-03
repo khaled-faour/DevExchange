@@ -59,6 +59,8 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
+
+<div align="center">
 | Landing|
 | -----------------|
 | ![Landing](./readme/landing-login.gif) |
@@ -95,7 +97,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | -----------------|
 | ![Interactive Whiteboard](./readme/meeting-whiteboard.gif) |
 
-
+</div>
 
 <br><br>
 <img id="how-to-run" src="./readme/title6.svg"/>
