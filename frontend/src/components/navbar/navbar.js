@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from '../../assets/images/logo-white.png';
 import useAuth from '../../hooks/useAuth';
@@ -7,8 +7,7 @@ import styles from './styles';
 import {useLocation} from 'react-router-dom'
 
 // Material UI
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import {AccountBalanceWallet as AccountBalanceWalletIcon, ArrowDropDown as ArrowDropDownIcon} from '@mui/icons-material';
 import Dropdown from '../dropdownList/dropdownList';
 const Navbar = () => {
     const location = useLocation();
