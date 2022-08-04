@@ -43,9 +43,6 @@ const PersonalInfo = ({user}) => {
         }
     }, [user]);
 
-    useEffect(()=>{
-        console.log(userInfo)
-    }, [userInfo]);
     const handleChange = (e) => {
         setUserInfo({
             ...userInfo,
@@ -54,12 +51,10 @@ const PersonalInfo = ({user}) => {
     }
 
     const handlePictureChange = (e) => {
-        console.log("picture change");
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-            console.log("Picture: ", reader.result);
             setUserInfo({
                 ...userInfo,
                 profile_picture: reader.result
