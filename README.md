@@ -16,9 +16,16 @@
 > Professionals (Tutors) can make money by getting up-votes on their answers or giving tutoring sessions based on their own hourly price. 
 
 ### User Stories
-- As a user, I wain to search for my questions and look for the answers provided by professionals.
-- As a user, I want to  post my own question and get a detailed answer from professionals.
-- As a user, I waint to book a live tutoring session with one of the professionals.
+- As a user, I want to search for my questions and look for the answers provided by professionals.
+- As a user, I want to post my own question and get a detailed answer from professionals.
+- As a user, I want to book a live tutoring session with one of the professionals.
+- As a user, I want to win coins if my answers are up-voted.
+- As a user, I want to receive an email with the meeting link for my booked session.
+
+### Tutor Stories
+- As a tutor, I want to be able to set my own availability times.
+- As a tutor, I want to set my own hourly price.
+- As a tutor, I want to win coins if my answers are up-voted. 
 
 <br><br>
 
