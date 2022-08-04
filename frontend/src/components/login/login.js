@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Input from '../../components/input/input';
 import styles from './styles';
 import Button from '../button/button';
@@ -7,9 +7,9 @@ import githubImage from '../../assets/images/Github.svg';
 import axios from 'axios';
 
 // Material UI
-import Divider from '@mui/material/Divider';
-import Alert from '@mui/material/Alert';
-import CircularProgress from '@mui/material/CircularProgress';
+import {Divider, Alert, CircularProgress} from '@mui/material';
+
+
 
 
 
