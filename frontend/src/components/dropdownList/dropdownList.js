@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import styles from './styles';
 import { useNavigate } from "react-router-dom";
 
 
 // Material-UI
-import PersonIcon from '@mui/icons-material/Person';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
-import LogoutIcon from '@mui/icons-material/Logout';
+import {Person as PersonIcon, CreditCard as CreditCardIcon, Logout as LogoutIcon} from '@mui/icons-material';
 
 const Dropdown = ({open}) => {
     const auth = useAuth();
