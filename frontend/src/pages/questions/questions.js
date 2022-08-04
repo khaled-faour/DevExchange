@@ -29,7 +29,6 @@ const Questions = () => {
     })
 
     const onFilterChange = (e) => {
-        console.log(e.target.name, typeof e.target.value);
         setFilters({
             ...filters,
              [e.target.name]: e.target.name === 'isAnswered'? parseInt(e.target.value): e.target.value
@@ -70,7 +69,6 @@ const Questions = () => {
             setQuestions(data);
             setFilteredQuestions(data);
             setLoading(false);
-            console.log(data);
         } catch (error) {
             setError(error);
             setLoading(false);
@@ -79,7 +77,6 @@ const Questions = () => {
     const fetchTags= async () => {
         await axios.get('/tags').then(res=>{
             setTagOptions(res.data);
-            console.log(res.data);
         })
     }
 
