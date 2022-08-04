@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './styles';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Button from '../../components/button/button';
 
 // Material UI
