@@ -66,9 +66,9 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | -----------------|
 | ![Landing](./readme/landing-login.gif) |
 
-| Questions | Post |
+| Questions | Add Question |
 | -----------------| -----|
-| ![Questions](./readme/questions-page.gif) | ![Post](./readme/question-view.gif) |
+| ![Questions](./readme/questions-page.gif) | ![Add Question](./readme/add-question.gif) |
 
 | Tutors | Tutor Availability |
 | -----------------| -----|
