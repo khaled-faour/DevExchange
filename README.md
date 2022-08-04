@@ -78,6 +78,10 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | -----------------| -----|
 | ![Add Comment](./readme/add-comment.gif) | ![Edit Comment](./readme/edit-comment.gif) |
 
+| Add Balance | Edit Profile |
+| -----------------| -----|
+| ![Add Balance](./readme/add-balance.gif) | ![Edit Profile](./readme/edit-profile.gif) |
+
 
 | Tutors | Tutor Availability |
 | -----------------| -----|
