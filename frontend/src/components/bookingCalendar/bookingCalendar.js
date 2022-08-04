@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { ScheduleMeeting } from 'react-schedule-meeting';
 import colors from '../../assets/styles/colors';
 import './styles.css';
