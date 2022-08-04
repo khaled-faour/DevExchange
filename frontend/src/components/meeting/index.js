@@ -33,12 +33,6 @@ const Meeting = () => {
         visible: true,
         title: "Join Meeting",
       },
-
-      /*
-
-     Other Feature Properties
-      
-      */
     };
 
     const meeting = new VideoSDKMeeting();
