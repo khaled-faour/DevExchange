@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './styles';
 import Button from '../button/button';
-import useAuth from '../../hooks/useAuth';
 import {useNavigate} from 'react-router-dom';
 import TruncatedText from '../../components/truncatedText/truncatedText';
 import BookingModal from '../../components/bookingModal/bookingModal';
@@ -9,13 +8,10 @@ import githubIcon from '../../assets/images/github-icon.svg';
 import linkedInIcon from '../../assets/images/linkedIn-icon.svg';
 
 // Material UI
-import StarIcon from '@mui/icons-material/Star';
-import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
-import PaymentsOutlinedIcon from '@mui/icons-material/PaymentsOutlined';
+import {Star as StarIcon, ArticleOutlined as ArticleOutlinedIcon, PaymentsOutlined as PaymentsOutlinedIcon} from '@mui/icons-material';
 
 const TutorCard = ({ tutor, showDescription = true, showProfiles = true, showViewButton = true, fetchTutors}) => {
     const classes = styles();
-    const auth = useAuth();
     const navigate = useNavigate();
     const [showBookingModal, setShowBookingModal] = useState(false);
 
