@@ -5,7 +5,6 @@ import colors from '../../assets/styles/colors';
 import { useNavigate } from 'react-router-dom';
 
 // Material UI
-import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 const UserCalendar  = ({user})=>{
@@ -37,9 +36,9 @@ const UserCalendar  = ({user})=>{
     }, [])
 
     return (
-        <div >
-                {
-                schedule.length > 0 ?
+        <div>
+            {
+            schedule.length > 0 ?
                 schedule.map((schedule, index) => {
                     const startTime = new Date(schedule.start_time)
                     const endTime = new Date(schedule.end_time)
@@ -57,8 +56,8 @@ const UserCalendar  = ({user})=>{
                         </div>
                     )
                 }): 
-                        <div>No Scheduled meetings</div>
-                }
+                    <div>No Scheduled meetings</div>
+            }
         </div>
     )
 }
