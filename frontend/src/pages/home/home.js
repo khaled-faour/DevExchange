@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import TopRatedTutors from '../../components/topRatedTutors/topRatedTutors';
 import MostVotedQuestions from '../../components/mostVotedQuestions/mostVotedQuestions';
