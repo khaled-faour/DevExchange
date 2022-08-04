@@ -70,6 +70,10 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | -----------------| -----|
 | ![Questions](./readme/questions-page.gif) | ![Add Question](./readme/add-question.gif) |
 
+| Add Answer | Edit Answer |
+| -----------------| -----|
+| ![Add Answer](./readme/add-answer.gif) | ![Edit Answer](./readme/edit-post.gif) |
+
 | Tutors | Tutor Availability |
 | -----------------| -----|
 | ![Questions](./readme/tutors-page.gif) | ![Tutor Availability](./readme/tutor-availability.gif) |
