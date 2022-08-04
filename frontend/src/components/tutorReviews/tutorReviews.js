@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import styles from './styles';
+import React from 'react';
 import ReviewTile from '../reviewTile/reviewTile';
 
 const TutorReviews = ({ reviews }) => {
-    const classes = styles();
 
     return (
         <div>
