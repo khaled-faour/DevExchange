@@ -6,8 +6,7 @@ import AvailabilityModal from '../availabilityModal/availabilityModal';
 import colors from '../../assets/styles/colors';
 
 // Material UI
-import AddIcon from '@mui/icons-material/Add';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import {Add as AddIcon, RemoveCircleOutline as RemoveCircleOutlineIcon} from '@mui/icons-material';
 
 const Availability = ({user, fetchUser}) => {
     const availability = user?.tutor_details.availability || [];
@@ -20,7 +19,6 @@ const Availability = ({user, fetchUser}) => {
         end_time: ''
     });
 
-
     const handleAvailabilityModal = (e) => {
         setAvailabilityModalOpen(!availabilityModalOpen);
     }
@@ -28,7 +26,6 @@ const Availability = ({user, fetchUser}) => {
     const handleNewAvailabilitySubmit = ()=>{
         axios.post('/tutorDetails/availability', {newAvailability})
         .then(res => {
-            console.log(res.data);
             handleAvailabilityModal()
             fetchUser()
         });
@@ -43,7 +40,6 @@ const Availability = ({user, fetchUser}) => {
     const handleDeleteAvailability = (id)=>{
         axios.delete(`/tutorDetails/availability/`, {data: {id}})
         .then(res=>{
-            console.log(res.data);
             fetchUser()
         })
     }
