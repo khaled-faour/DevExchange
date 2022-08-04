@@ -9,11 +9,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
 
 // Material UI
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
@@ -23,7 +21,6 @@ const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
   const auth = useAuth();
   const [fullScreen, setFullScreen] = useState(false);
   const [question, setQuestion] = useState({title:'', content: '', tags: []});
-  const [tags, setTags] = useState([]);
   const [tagOptions, setTagOptions] = useState([]);
   
   const handleClose = () => {
@@ -66,7 +63,6 @@ const AddQuestion = ({isOpen, setIsOpen, fetchData}) => {
 
   useEffect(() => {
     axios.get('/tags').then(res=>{
-      console.log(res.data)
       setTagOptions(res.data);
     }).catch(err=>{
       console.log(err)
