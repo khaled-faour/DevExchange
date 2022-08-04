@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styles from './styles';
 import Tag from '../tag/tag';
 import colors from '../../assets/styles/colors'
 import {useNavigate} from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
 import Avatar from '../../components/avatar/avatar';
 
 const QuestionTile = ({
@@ -18,16 +17,12 @@ const QuestionTile = ({
 })=>{
     
     const classes = styles();
-    const auth = useAuth();
     const navigate = useNavigate();
 
     const handleNavigation = ()=>{
         navigate(`/questions/${id}`);
     }
 
-    useEffect(()=>{
-        console.log("USERR: ", user)
-    }, [id]);
     return (
         <div className={classes.container} style={{borderColor: borderColor}} onClick={handleNavigation}>
             <div className={classes.avatar}>
