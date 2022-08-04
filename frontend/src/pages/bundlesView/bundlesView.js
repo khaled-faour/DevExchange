@@ -1,4 +1,4 @@
-import div, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import Button from '../../components/button/button';
 import BundleSelect from '../../components/bundleSelect/bundleSelect';
 import BillingInfo from '../../components/billingInfo/billingInfo';
@@ -9,9 +9,7 @@ import styles from './styles';
 import useAuth from '../../hooks/useAuth';
 
 // Material UI
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
+import {Stepper, Step, StepLabel} from '@mui/material';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 
 const steps = ['Select your bundles', 'Insert billing info', 'Confirm your order'];
