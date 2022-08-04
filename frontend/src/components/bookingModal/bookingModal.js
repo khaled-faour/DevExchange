@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Button from '../button/button';
 import BookingCalendar from '../bookingCalendar/bookingCalendar';
 import { ToastContainer, toast } from 'react-toastify';
