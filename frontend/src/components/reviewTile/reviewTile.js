@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Avatar from '../../components/avatar/avatar';
 import ReviewStars from '../../components/reviewStars/reviewStars';
 import styles from './styles';
