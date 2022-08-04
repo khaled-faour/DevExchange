@@ -23,8 +23,6 @@ const Tutors = () => {
         sort: 'most-voted'
     })
 
-   
-
     const onFilterChange = (e) => {
         setFilters({
             ...filters,
@@ -71,14 +69,12 @@ const Tutors = () => {
     const fetchTags= async () => {
         await axios.get('/tags').then(res=>{
             setTagOptions(res.data);
-            console.log(res.data);
         })
     }
 
     const fetchTutors = async () => {
         axios.get('/tutorDetails')
         .then(res => {
-            console.log(res.data)
             setTutors(res.data);
             setFilteredTutors(res.data);
             setIsLoading(false);
