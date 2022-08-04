@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Editor from '../../components/richTextEditor/richTextEdit';
 import Button from '../../components/button/button';
 import {useParams} from 'react-router-dom';
@@ -14,10 +14,6 @@ const AddAnswer = ({fetchPosts}) =>{
     question_id: id,
     content: '',
   });
-
-  const clearAnswer = () =>{
-    
-  }
 
   const handleValueChange = (value) =>{
     setAnswer({
@@ -36,17 +32,11 @@ const AddAnswer = ({fetchPosts}) =>{
     })
   }
 
-  useEffect(()=>{
-    console.log(answer)
-  }, [answer]);
-
-
   return (
     <div className={classes.container}>
       <ToastContainer hideProgressBar/>
       <Editor value={answer.content} onChange={handleValueChange}/>
       <div className={classes.actions}>
-        <Button onClick={clearAnswer} rounded outlined>Clear</Button>
         <Button onClick={handleSubmit} rounded>Submit</Button>
       </div>
     </div>
