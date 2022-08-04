@@ -2,7 +2,8 @@
 
 <div align="center">
 
-> Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
+> Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
+
 **[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech-stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how-to-run)**
 
 </div>
@@ -64,7 +65,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <br><br>
 <img id="implementation" src="./readme/title5.svg"/>
 
-> Uing the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes built with figma from the user stories we have, the implementation of the app is shown as below, these are animated screenshots from the real app
 
 
 <div align="center">
@@ -124,7 +125,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <img id="how-to-run" src="./readme/title6.svg"/>
 
 
-> Below are the instruction to setup and run both the frontend and the backend.
+> Below are the instructions to setup and run both the frontend and the backend.
 ### Prerequisites
 
 First thing, you need to have the latest npm version:
