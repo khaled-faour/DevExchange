@@ -30,7 +30,6 @@ const Profile = (props) => {
 
     const fetchUser = async () => {
         axios.get(`/users/me`).then(res => {
-            console.log(res.data)
             setUser(res.data);
             setIsLoading(false);
         }
