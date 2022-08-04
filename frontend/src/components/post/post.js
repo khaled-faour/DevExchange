@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles';
-import Avatar from '../../components/avatar/avatar';
 import UserCard from '../../components/userCard/userCards';
 import Comment from '../../components/comment/comment';
 import Button from '../../components/button/button';
@@ -11,9 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
 // Material UI
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import EditIcon from '@mui/icons-material/Edit';
+import {ArrowDropUp as ArrowDropUpIcon, ArrowDropDown as ArrowDropDownIcon, Edit as EditIcon } from '@mui/icons-material';
 
 const Post = (props)=>{
     const auth = useAuth();
